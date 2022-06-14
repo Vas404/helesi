@@ -68,10 +68,10 @@ function makeRequest( url, method ){
   <body class="xr_bgb15">
     <div class="container">
       <div class="topnav" id="myTopnav">
-        <a class="logo" href="http://localhost:4044/api/v1"
+        <a class="logo" href="https:\/\/95.216.162.109/api/v1"
           ><img src="images/103.jpg" alt="helesi" title=""
         /></a>
-        <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/usersMenu','GET').then(res => res.text()).then(htmlStr => {
+        <a onclick = "makeRequest('https:\/\/95.216.162.109/api/v1/usersMenu','GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
@@ -145,7 +145,7 @@ function makeRequest( url, method ){
           >
             <b>CSV</b>
           </button>
-          <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/addwastes','GET').then(res => res.text()).then(htmlStr => {
+          <a onclick = "makeRequest('https:\/\/95.216.162.109/api/v1/addwastes','GET').then(res => res.text()).then(htmlStr => {
             document.open();
             document.write(htmlStr);
             document.close();

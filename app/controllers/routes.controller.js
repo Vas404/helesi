@@ -76,7 +76,7 @@ exports.create = (req, res) => {
             {
               value={
                 hash:hash_route,
-                address:"http://localhost:62625/checkqr_routes/"
+                address:"https://95.216.162.109:62625/checkqr_routes/"
               }
 
               res.send(value);
@@ -98,184 +98,7 @@ exports.create = (req, res) => {
     
   })
 
-  // fetch('http://94.66.5.210:3339/hash/'+hash_route+'/encoding/base58')
-  // .then(response => response.json())
 
-  //   .then(data_1 => {
-
-  //   res.send("entry already exists");
-  //   }).catch(err => {
-
-  //     fetch ("http://94.66.5.210:3339/hash/",{
-  //       method:"post",
-  //       headers:{
-  //         'Accept':'application/json',
-  //         'Content-Type':'application/json'
-  //        },
-  //        body:JSON.stringify({ 
-  //          hash:hash_route,
-  //          encoding:'base58'
-  //        })
-  //     })
-  //     .then ((response)=>
-  //     {
-  //       if(response)
-  //       {
-  //         Route.create(route).then(data =>
-  //           {
-  //             value={
-  //               hash:hash_route,
-  //               address:"http://localhost:62625/checkqr_routes/"
-  //             }
-
-  //             res.send(value);
-              
-  //           }).catch(err =>
-  //             {
-  //               res.send("Entry not created");
-  //             })
-  //       }
-  //       else{
-  //         res.send("Hash not created");
-  //           }
-  //     })
-  // });
-
-
-  // fetch('http://65.108.178.63/hash/'+hash_route+'/encoding/base58')
-  // .then(response => response.json())
-  //   .then(data_1 => {
-  //    // console.log(data_1.chainpoint)
-  //     if(data_1.chainpoint!=null)
-  //     {
-  //       res.send("entry already exists1");
-  //     }
-  
-  //   }).catch(err => {
-
-  //     fetch ("http://65.108.178.63/hash/",{
-  //       method:"post",
-  //       headers:{
-  //         'Accept':'application/json',
-  //         'Content-Type':'application/json'
-  //        },
-  //        body:JSON.stringify({ 
-  //          hash:hash_route,
-  //          encoding:'base58'
-  //        })
-  //     })
-  //     .then ((response)=>
-  //     {
-  //       if(response)
-  //       {
-  //         Route.create(route).then(data =>
-  //           {
-  //             value={
-  //               hash:hash_route,
-  //               address:"http://localhost:62625/checkqr_routes/"
-  //             }
-
-  //             res.send(value);
-              
-  //           }).catch(err =>
-  //             {
-  //               res.send("Entry not created");
-  //             })
-  //       }
-  //       else{
-  //         res.send("Hash not created");
-  //           }
-  //     })
-  // });
-
-  // //Search local DB if the hash exists
-  // Route.findAll({
-  //   where:{
-  //     hash:password
-  //     } 
-  // }).then(data => {
-    
-  //   //Check if data given from the DB are not empty
-  //   console.log('check if Route exists');
-  //   if (Object.keys(data).length !== 0 && data.constructor !== Object){
-      
-  //     console.log('Route exists,exiting');
-  //     //if username exist in database send a true response and exit
-  //     res.send(true);
-
-  //   //else the user does not exist and proceed to create
-  //   }else{
-  //     console.log('Route does not exist, proceed');
-  //     console.log('check if data exist in LTO');
-  //     //Store the credentials in a variable
-  //     //var hash = password;
-  //     console.log('fetch search request to the LTO');
-  //     //Make a fetch hash search request to the LTO network
-  //     fetch('http://77.69.37.69:8082/hash/'+password+'/encoding/base58')
-  //       .then(response => response.json())
-  //         .then(data => {
-  //           //if the data exist in LTO, send a true response and exit
-  //           console.log('fetch request received that data exist in LTO, exiting');
-  //           res.send(true);
-  //         //if the data do not exist in LTO the search in DB
-  //         }).catch(err => {
-  //           console.log('fetch request received no data, procceed to POST data request');
-  //           //Inittiate the search within the DB
-  //           ///////////////////////////////////////////////////////////////////
-  //           console.log('data do not exist within the LTO, creating LTO entry');
-  //           //POST fetch REQUEST TO LTO anchoring service
-  //           fetch("http://77.69.37.69:8082/hash", {
-  //             method: "post",
-  //             headers: {
-  //               'Accept': 'application/json',
-  //               'Content-Type': 'application/json'
-  //             },
-  //             //Serialize the JSON body
-  //             body: JSON.stringify({
-  //               hash: password,
-  //               encoding: 'base58'
-  //               })
-  //             })
-  //             //Get response from fetch request 
-  //             .then( (response) => { 
-  //               //Check if response is true or false
-  //               if (response){
-  //                 //if response is true then create the DB entry
-  //                 console.log('Creating DB entry');
-  //                 //create a user in the DB according to the constructor
-  //                 //DB post request
-  //                 Route.create(route).then(data => {
-  //                   console.log('The creation of the DB entry is succeed');
-  //                   res.send(false);
-  //                    //DB create request 
-  //                   }).catch(err => {
-  //                     console.log('An error occured during the creation of the DB entry');
-  //                     res.send(true);
-  //                   });
-  //               }else{
-  //                 console.log('An error occured during the creation of the LTO entry');
-  //               }
-  //             });   
-  //             //Search data in DB If function ends            
-  //           //Fetch request error handler
-  //           }).catch(err => {
-  //             //Error handling
-  //             console.log('error after');
-  //             res.status(500).send({
-  //               message:
-  //               err.message || "Some error occurred while retrieving the hash."
-  //             });
-  //           }); 
-  //           //if fetch doesnot receive a response then send a false response to the frontend
-  //           //res.send(false);
-  //   }    
-  // //DB hash search request error handler  
-  // }).catch(err => {
-  //   res.status(500).send({
-  //     message:
-  //     err.message || "Some error occurred while retrieving tutorials."
-  //   });
-  // });
 }; 
 
 exports.findAll = (req, res) => {
@@ -408,7 +231,7 @@ exports.updateDB = (req, res) => {
 //find documents public access
 exports.checkroute = (req, res) => {  
   var hash = req.params.id; 
-  fetch('http://localhost:62627/api/users/checkdept/'+hash)
+  fetch('https://95.216.162.109/api/users/checkdept/'+hash)
   .then(response => response.json())
     .then(data=>{
       if(data){
@@ -562,7 +385,7 @@ exports.PrintDept = (req, res) => {
       id:id} 
      })
    .then (data => {
-    fetch('http://localhost:62627/api/users/print/dept', {
+    fetch('https://95.216.162.109/api/users/print/dept', {
       method: 'post',
       body:    JSON.stringify(data),
       headers: { 'Content-Type': 'application/json;charset=UTF-8' }

@@ -19,7 +19,7 @@ function initMap() {
 const script = document.createElement('script')
 
 
-script.src = "http://localhost/api/v1/getRoutesCoords"
+script.src = "https://95.216.162.109/api/v1/getRoutesCoords"
 
 document.getElementsByTagName("head")[0].appendChild(script)
 

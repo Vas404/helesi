@@ -40,10 +40,10 @@ if( process.env.NODE_ENV == 'production' ){
 }
 
 const api = process.env.API_URL
-var corsOptions = [`http://localhost:${port}`,
-                   `http://localhost:3000`,
-                   `http://localhost:62622`,
-       {  origin:  `http://localhost:62622`}]
+var corsOptions = [`https://95.216.162.109:${port}`,
+                   `https://95.216.162.109:3000`,
+                   `https://95.216.162.109:62622`,
+       {  origin:  `https://95.216.162.109:62622`}]
 
 
 
