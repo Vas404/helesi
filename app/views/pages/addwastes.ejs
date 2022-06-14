@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta charset="utf-8" />
+    <meta name="Generator" content="Xara HTML filter v.9.6.2.48" />
+    <meta name="XAR Files" content="images/xr_files.txt" />
+    <title>Add wastes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="images/xr_fonts.css" />
+    <script>
+      document.documentElement.className = "xr_bgh14";
+    </script>
+    <link rel="stylesheet" href="images/xr_main.css" />
+    <link rel="stylesheet" href="images/custom_styles.css" />
+    <link rel="stylesheet" href="images/xr_text.css" />
+    <script src="images/roe.js"></script>
+    <script src="images/prs4.js"></script>
+    <link rel="stylesheet" href="images/xr_all.css" id="xr_mvcss" />
+    <!--[if lt IE 9
+      ]><link rel="stylesheet" href="images/xr_ie.css"
+    /><![endif]-->
+    <script>
+      if(!window.localStorage.getItem('token'))
+      window.location.href = '/'
+      console.log(window.localStorage.getItem('token'))
+    function makeRequest( url, method ){
+      var jwtToken = localStorage.getItem('token')
+      console.log(jwtToken)
+      var token = window.localStorage.getItem('token')
+              const token2 = JSON.parse(token)
+              console.log(token2)
+              console.log(`EDW TO TOKEN: ${token2.token}`)
+              const lastToken = token2.token
+      var headers ={}
+        if(lastToken) {
+          headers['Authorization'] = lastToken
+          console.log(method)
+        }
+        return fetch(url,{
+          method: method,
+           mode: 'cors',
+          headers: headers
+        })
+    }
+    </script>
+    <script>
+      var xr_multivar = 1;
+      xr_ios_ini2();
+    </script>
+    <script src="images/jquery.js"></script>
+    <link rel="stylesheet" href="images/ani.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        margin: 0;
+        background-color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="topnav" id="myTopnav">
+        <a class="logo" href="http://localhost:4044/api/v1"
+          ><img src="images/103.jpg" alt="helesi" title=""
+        /></a>
+        <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/waste','GET').then(res => res.text()).then(htmlStr => {
+          document.open();
+          document.write(htmlStr);
+          document.close();
+          })" class="button_1" style="color: #ffffff; width:5%">Back</a>
+      </div>
+      <h1 class="banner">Add Wastes</h1>
+          <div class="contact-form">
+            <form class="form" id="createw">
+              <div>
+                <input
+                  type="text"
+                  id="driver"
+                  name="driver"
+                  placeholder="Οδηγός"
+                  required
+                />
+                <input
+                  type="text"
+                  id="vehicle"
+                  name="vehicle"
+                  placeholder="'Οχημα"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  placeholder="Τοποθεσία"
+                  required
+                />
+                <input
+                  type="text"
+                  id="coords"
+                  name="coords"
+                  placeholder="Συντεταγμένες"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  id="kg"
+                  name="kg"
+                  placeholder="Κιλά"
+                  required
+                />
+                <input
+                type="text"
+                id="type"
+                name="type"
+                placeholder="Είδος"
+                required
+              />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="route"
+                  name="route"
+                  placeholder="Διαδρομή"
+                  required
+                />
+                <input
+                type="text"
+                id="material"
+                name="material"
+                placeholder="Υλικό"
+                required
+              />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  id="quality"
+                  name="quality"
+                  placeholder="Ποιότητα"
+                  required
+                />
+                <input
+                type="number"
+                id="pass"
+                name="pass"
+                placeholder="Passage"
+                required
+              />
+              </div>
+              <div>
+                <input
+                  type="time"
+                  id="time"
+                  name="time"
+                  placeholder="'Ωρα"
+                  required
+                />
+                <input
+                type="date"
+                id="date"
+                name="date"
+                placeholder="Ημερομηνία"
+                required
+              />
+              </div>
+            </form>
+          </div>
+          <div class="contact-form-buttons">
+            <a 
+            onclick = "makeRequest('http:\/\/localhost:4044/api/v1/addwastes','GET').then(res => res.text()).then(htmlStr => { document.open();
+              document.write(htmlStr);
+              document.close();
+            })"
+               style="color: #ffffff;margin-right: 10px;padding-top: 10px;" class="button_1">Clear</a>
+            <button
+            onclick = "makeRequest('http:\/\/localhost:4044/api/v1/addwastes','GET').then(res => res.text()).then(htmlStr => { document.open();
+              document.write(htmlStr);
+              document.close();
+            })" 
+             id="create" 
+             class="button_1">Submit</button>
+          </div>
+        </div>
+        
+
+  <script>
+    var data;
+$("#create").click(function (req, res, next) {
+        console.log("Add wastes");
+       
+        var driver = document.getElementById("driver").value
+       console.log(driver)
+        var vehicle = document.getElementById("vehicle").value
+        console.log(vehicle)
+        var location = document.getElementById("location").value
+
+        var coords = document.getElementById("coords").value
+
+        var kg = document.getElementById("kg").value
+      
+        var type = document.getElementById("type").value
+
+        var route = document.getElementById("route").value
+      
+        var material = document.getElementById("material").value
+
+        var quality = document.getElementById("quality").value
+    
+        var pass = document.getElementById("pass").value
+
+        var time = document.getElementById("time").value
+    
+        var date = document.getElementById("date").value
+
+        form = $("#createw").serialize();
+
+       // $("#createw")[0].reset(); 
+
+        var waste = {
+            driver: driver,
+            vehicle: vehicle,
+            location: location,
+            coords: coords,
+            kg: kg,
+            type: type,
+            route: route,
+            material: material,
+            quality: quality,
+            pass: pass,
+            time: time,
+            date: date,
+           
+          }
+console.log(waste)
+console.log(form)
+
+            var token = localStorage.getItem("token")
+            var token2 = JSON.parse(token)
+            var lastToken = token2.token 
+        $.ajax({
+          url: "/api/v1/createWaste",
+          data: form,   
+          type: "POST",
+          dataType: "json",
+          headers: { 
+            "Authorization": lastToken
+          },
+          
+          success: function (result) {
+            if (result === true) {
+            console.log(`this is the result:`+result)
+            $("#createw")[0].reset()
+            }
+      }
+    })
+  })
+   
+</script>
+
+
+  </body>
+</html>

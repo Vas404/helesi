@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ('../partials/head') %>
+</head>
+<body>
+	<% include ('../partials/navigationMenu') %>
+    
+	<% include ('../partials/userMain') %>
+	<% include ('../partials/info') %>
+	</div>
+
+	<script type="text/javascript">
+
+//On click call find function 
+$( "#findUser" ).click(async function() {
+	// checks if field is empty
+	username = document.getElementById('name').value;
+	pass = document.getElementById('pwd').value;
+	if (username=="" || password==""){
+	}else{
+		//console.log(id);
+			find(username);
+			return false;
+	}			
+		});
+//find if the user exists	
+function find(id){
+	var credentials = $("#find").serialize();
+	console.log('edw-epishs')
+	$.ajax({
+            url: 'http://localhost:4044/api/v1/login',
+            data: credentials,
+            type: "POST",
+            dataType: 'json',
+             success: function(result) {
+				//console.log(result.prof)
+				//console.log("result");
+				if (result){
+				console.log(result)
+				if (result.success === true){
+				
+
+				await window.localStorage.setItem('userInfo',JSON.stringify({'token':result.token}))
+
+					console.log(window.localStorage)
+
+					console.log(window.localStorage.getItem(userInfo.token))
+					var token = localStorage.getItem(userInfo.token)
+console.log(`EDW TO TOKEN: ${token}`)
+
+.then(fetch('/usersMenu', {
+        method: 'GET',
+        headers: {
+            'Authorization':  token
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+             window.location.href = '/usersMenu';
+        }))
+        
+					
+				}else if(result === false){
+					window.alert("Wrong Credentials")
+				}
+			}else(window.location.href='/')
+		},
+			error:function(result){					
+			}
+		}); 
+		return false;
+}
+	</script>
+
+</body>
+<footer>
+	<% include ../partials/footer %>
+  </footer>
+</html>

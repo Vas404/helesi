@@ -1,0 +1,119 @@
+<!DOCTYPE html >
+<%- include ("../partials/print",{data: data});%>
+
+
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<head >
+
+  <a >
+    <img src="/images/icons/helesi.png" width="140" height="60" >
+  </a>
+
+  <div style="position: absolute;margin-top: 0px;margin-left: 10px; font-size: 15px;">Report_Code: waste_<span id="date"></span> </div>
+
+  <style>
+    table, th, td {
+  border: 1px solid black;
+}
+  </style>
+  <body onload ="makeCode()">
+	<div id="show_table"style="overflow-x:auto;margin-left: 10px; " >
+    <br>
+ 
+    <!-- <h2>Αποτελέσματα Αναζήτησης</h2> -->
+    <table id="table" style="font-size: 13px;">
+      <tr >
+        <th>Date</th>
+        <th>Hour</th>
+        <th>Vehicle</th>
+        <th>Driver</th>
+        <th>Location</th>
+        <th>Coordinates</th>
+        <th>Weight (KG)</th>
+        <th>Route</th>
+        <th>Passage</th>
+        <th>Type</th>					
+        <th>Material</th>					
+        <th>Quality Degree</th>					
+      </tr> 
+     <% const data_report = JSON.parse(data)%>
+     
+ 
+      <% for (var i = 0; i < data_report.length; i++) {%>
+      <tr>  
+        <td><%= data_report[i].date%></td>
+        <td><%= data_report[i].time%></td>
+        <td><%= data_report[i].vehicle%></td>
+        <td><%= data_report[i].driver%></td>
+        <td><%= data_report[i].location%></td>
+        <td><%= data_report[i].coords%></td>
+        <td><%= data_report[i].kg%></td>
+        <td><%= data_report[i].route%></td>
+        <td><%= data_report[i].pass%></td>
+        <td><%= data_report[i].type%></td>
+        <td><%= data_report[i].material%></td>
+        <td><%= data_report[i].quality%></td>
+      </tr>
+      
+
+     
+      <% } %> 
+            </table>
+  </div>
+  
+  <div id="test" ></div>
+
+
+  <div id="qrcode" style="position: absolute;margin-top: 30px;margin-left: 70px;"></div>
+    <script type='text/javascript'>
+            var qrcode = new QRCode(("qrcode"), {
+              width:  150,
+              height: 150,
+              
+        })
+        
+        function makeCode () {	
+          const errors = JSON.parse(errors)
+        for(i=0; i<data_report.length; i++){
+        if(errors.indexOf(JSON.stringify(data_report[i].id))!==-1) { 
+        console.log(errors.indexOf(JSON.stringify(data_report[i].id)))
+        var row = document.getElementById('table').getElementByTagName('td') 
+        row[i+1].style.backgroundColor = "red" 
+
+       } 
+      }
+    }
+        
+               Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
+       value: function() {
+        function pad2(n) {  // always returns a string
+            return (n < 10 ? '0' : '') + n;
+        }
+
+        return this.getFullYear() +
+               pad2(this.getMonth() + 1) + 
+               pad2(this.getDate()) +
+               pad2(this.getHours()) +
+               pad2(this.getMinutes()) +
+               pad2(this.getSeconds());
+       }
+
+        });
+        document.getElementById("date").innerHTML=new Date().YYYYMMDDHHMMSS();
+      
+      
+
+    </script>
+</body>
+  <footer>
+   
+   
+    </div>
+      
+    
+
+  </footer>
+  
+  
+</html>
