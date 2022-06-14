@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<% include ../partials/print %>
+
+
+<html >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<head>
+
+  <div style="width: 370px; padding: 8px; margin: 70px 200px 20px 40px; text-align: center;">
+    
+    <p style="font-size: 16px;">
+      <a >
+        <img src="/images/icons/ethnoshmo.jpg" width="75" height="75" >
+      </a>
+      <br>
+      <b style="font-size: 18px; text-align: center;">ΕΛΛΗΝΙΚΗ ΔΗΜΟΚΡΑΤΙΑ</b><br>
+      <a style="text-align: center"></a>ΝΟΜΟΣ ΑΡΓΟΛΙΔΑΣ <br>
+      <a >
+        <img src="/images/icons/dhmarglogo.jpg" width="120" height="75" >
+      </a>
+      <br>
+      <a><b>Δ/ΝΣΗ</b> ΟΙΚΟΝΟΜΙΚΩΝ ΥΠΗΡΕΣΙΩΝ</a><br>
+      ΚΑΙ ΤΟΠΙΚΗΣ ΟΙΚΟΝΟΜΙΚΗΣ <br>
+      ΑΝΑΠΤΥΞΗΣ<br>
+      <b>ΤΜΗΜΑ</b> ΟΙΚΟΝΟΜΙΚΗΣ ΑΝΑΠΤΥΞΗΣ<br>
+      ΚΑΠΟΔΙΣΤΡΙΟΥ 9 - 21232 ΑΡΓΟΣ<br>
+      <b>Πληρ:</b> ΧΡ. ΛΥΚΙΔΗΣ - Χ.ΚΟΥΡΤΗΣ <br>
+      <a class="fa fa-phone">.: 2751360024 - 2751360075</a>
+    </p>
+  </div>
+
+  <div style="width: 200px; padding: 8px; margin: -400px 140px 40px 775px;">
+    <p style="font-size: 18px;"><br>
+      <b>Άργος,</b> <%= createdAt %> <br>
+      <b>Αρ. Πρωτ:</b> <%= id %>
+    </p>
+  </div>
+
+</head>
+  
+  <body onload="makeCode()">
+    <div style="width: 420px; border: 2px solid black; padding: 2px; margin: 40px 140px 60px 500px;">
+      <p style="font-size: 20px;"> Προς:<br>
+        <%= owner_name %> <%= owner_surname %> του <%= owner_father %><br>
+        για το κατάστημα που βρίσκεται στην<br>
+        <%= address %> <%= address_num %> <br>
+        με επωνυμία: <%= company_name %> <br>
+        της δημοτικής κοινότητας<br>
+        του Δήμου Άργους - Μυκηνών
+      </p>
+    </div>
+
+    <p style=" margin-left: 70px; margin-right: 70px; text-align: justify; text-justify: inter-word;"> 
+    
+      <h1 style="text-indent: 70px; font-size: 18px; "> <u>ΘΕΜΑ: ΒΕΒΑΙΩΣΗ ΓΙΑ ΤΗΝ ΕΓΚΑΤΑΣΤΑΣΗ ΚΑΤΑΣΤΗΜΑΤΟΣ ΣΕ ΣΥΓΚΕΚΡΙΜΕΝΗ ΤΟΠΟΘΕΣΙΑ.</u></h1> <br>
+    
+    <p style=" line-height: 1.3; margin-top: -10px; margin-left: 70px; font-size: 20px; margin-right: 70px; text-align: justify; text-justify: inter-word;">
+      
+      Σε απάντηση της από <b><%= dom_date %></b> αίτηση σας και έχοντας υπόψη:<br>
+    <b>1.</b> Το Ν.4442/2016 (ΦΕΚ230/τ.Α΄/07-12-2016 «Νέο θεσμικό πλαίσιο για την άσκηση οικονομικής δραστηριότητας και άλλες διατάξεις»)<br>
+    <b>2.</b> Την Κ.Υ.Α.16228/18-05-2017 (ΦΕΚ1723/τ.Β’/18-05-2017 «Απλούστευση και προτυποποίηση των διοικητικών διαδικασιών γνωστοποίησης λειτουργίας Καταστημάτων Υγειονομικού Ενδιαφέροντος, Θεάτρων και Κινηματογράφων»)<br>
+    <b>3.</b> Την με αρ. πρωτ. <%= id %>/<%= createdAt %> αίτησή σας με τα προβλεπόμενα δικαιολογητικά. <br>
+    <b>4.</b> Το με αρ. πρωτ. <%= dom_id %>/<%= dom_date %> έγγραφο της Δ/νσης Υπηρεσίας Δόμησης του Δήμου Άργους - Μυκηνών. <br>
+    </p>
+
+    <p style=" line-height: 1.3; text-indent: 50px; margin-top: -10px; margin-bottom: 40px; margin-left: 70px; margin-right: 70px; text-align: justify; text-justify: inter-word; font-size: 20px;">  
+
+       Σας γνωρίζουμε ότι <b>επιτρέπεται</b> η εγκατάσταση εντός της Κ. του <b>ΔΗΜΟΥ ΑΡΓΟΥΣ - ΜΥΚΗΝΩΝ</b> και στη οδό  <b> <%= address %> με </b> αρ. <b><%= address_num %> </b>, η λειτουργία που αναφέρετε στην αίτηση σας.
+      
+    </p>
+
+    <p style="font-size: 18px; text-indent: 70px;"> <b>Περιγραφή δραστηριότητας: </b> <%= business_sector %></p> <br>
+
+    <p style="font-size: 18px; text-indent: 70px;"> <b>ΣΥΜΦΩΝΑ ΜΕ ΤΟΥΣ ΚΑΔ 1:</b> <%= kad %></p> <br>
+
+    
+   
+
+    <p style=" line-height: 1.3; text-indent: 50px; margin-left: 70px; margin-right: 70px; text-align: justify; text-justify: inter-word; font-size: 20px">  
+      Η παρούσα ισχύει για πέντε (5) μήνες από την έκδοσή της εντός των οποίων θα πρέπει να έχει υποβληθεί η γνωστοποίηση του άρθρου 3 της Κ.Υ.Α. 16228/18-05-2017 (ΦΕΚ 1723,τ. Β'/18,05,2017).
+    </p>
+
+    <p style=" line-height: 1.3;  margin-left: 70px; margin-right: 70px;  font-size: 20px">  
+      <b>Η παρούσα βεβαίωση δεν είναι άδεια λειτουργίας καταστήματος.</b>
+    </p>
+
+    <p style=" line-height: 1.3;  margin-left: 70px; margin-right: 70px; font-size: 20px">  
+      Συνημμένα: Αντίγραφο όπου σημειώνεται η θέση του ακινήτου.
+    </p>
+
+  <div id="qrcode" style="position: absolute;margin-top: 30px;margin-left: 70px;"></div>
+    <script>
+            var qrcode = new QRCode(("qrcode"), {
+              width:  150,
+              height: 150,
+              
+        });
+
+        function makeCode () {		
+          var address = "https://blockchaincert.net/checkqr";
+        	var hashno = "<%= hash %>";
+          var elText = address+ '?'+hashno;
+        	if (!elText) {
+        		alert("Input a text");
+        		elText.focus();
+        		return;
+        	}
+        	qrcode.makeCode(elText);
+        }
+
+    </script>
+</body>
+  <footer>
+   
+    <div style="font-size: smaller; position: absolute; top:1350px; margin-left: 70px;">
+      <p> Αριθμός Blockchain Πιστοποίησης Εγγράφου: <span  name= "hash" id = "hash" ><%= hash %></span> </p>
+    </div>
+    <div style="width: 350px;  padding: 8px; margin: 50px 100px 40px 600px; text-align: center;">
+      <p style="font-size: 18px; ">
+        <a></a><b>O / H Προϊστάμενος/νη Τμήματος</b></a><br>
+        <a></a><b>Oικονομικής Ανάπτυξης</b></a><br>
+        <br>
+        <a style="text-align: center; "><%= sig_id %></a>
+      </p>
+    </div>
+    <div style="width: 300px;  padding: 8px; margin: 50px 100px 40px 700px;">
+     
+    </div>
+
+  </footer>
+  
+  
+</html>
