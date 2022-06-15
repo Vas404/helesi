@@ -29,7 +29,7 @@ function find(id){
 	var credentials = $("#find").serialize();
 	console.log('edw-epishs')
 	$.ajax({
-            url: 'https:\/\/95.216.162.109/api/v1/login',
+            url: 'http:\/\/95.216.162.109:443/login',
             data: credentials,
             type: "POST",
             dataType: 'json',

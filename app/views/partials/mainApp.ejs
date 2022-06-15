@@ -235,7 +235,7 @@
     console.log("edw-eimaste-kainourgioi - einai mesa sto partials/mainApp.ejs");
     var credentials = $("#find").serialize();
     $.ajax({
-            url: 'https:95.216.162.109/api/v1/login',
+            url: 'http:95.216.162.109:443/login',
             data: credentials,
             type: "POST",
             dataType: 'json',
@@ -273,7 +273,7 @@
 //   //    }
 //    //}
 //  })
-makeRequest('/api/v1/usersMenu','GET').then(res => res.text()).then(htmlStr => {
+makeRequest('/usersMenu','GET').then(res => res.text()).then(htmlStr => {
   document.open();
   document.write(htmlStr);
   document.close();
