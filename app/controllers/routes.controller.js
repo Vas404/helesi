@@ -76,7 +76,7 @@ exports.create = (req, res) => {
             {
               value={
                 hash:hash_route,
-                address:"https://95.216.162.109:62625/checkqr_routes/"
+                address:"http://95.216.162.109:62625/checkqr_routes/"
               }
 
               res.send(value);
@@ -231,7 +231,7 @@ exports.updateDB = (req, res) => {
 //find documents public access
 exports.checkroute = (req, res) => {  
   var hash = req.params.id; 
-  fetch('https://95.216.162.109/api/users/checkdept/'+hash)
+  fetch('http://95.216.162.109/api/users/checkdept/'+hash)
   .then(response => response.json())
     .then(data=>{
       if(data){
@@ -385,7 +385,7 @@ exports.PrintDept = (req, res) => {
       id:id} 
      })
    .then (data => {
-    fetch('https://95.216.162.109/api/users/print/dept', {
+    fetch('http://95.216.162.109/api/users/print/dept', {
       method: 'post',
       body:    JSON.stringify(data),
       headers: { 'Content-Type': 'application/json;charset=UTF-8' }
