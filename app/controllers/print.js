@@ -1,5 +1,5 @@
 async function print(){
-    const url = "http://95.216.162.109/print/";
+    const url = "http://95.216.162.109:443/print/";
       //console.log('1');
       var data = localStorage.getItem("object_name");
      

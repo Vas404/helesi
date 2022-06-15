@@ -235,7 +235,7 @@ exports.SetPrintFileRoutes = async (req, res) => {
           });
           //was http://77.69.37.69:62625/api/v1/setprintwaste/
           const page = await browser.newPage()   
-          await page.goto('http://95.216.162.109/api/v1/setprintwaste/'+params)
+          await page.goto('http://95.216.162.109:443/setprintwaste/'+params)
           const options = {
             //path: 'pdf/filename.pdf',
             format: 'A4',
@@ -276,7 +276,7 @@ exports.SetPrintFileRoutes = async (req, res) => {
       });
       //was http://77.69.37.69:62625/api/v1/setprintwaste/
       const page = await browser.newPage()   
-      await page.goto('http://95.216.162.109/api/v1/setprintroutes/'+params)
+      await page.goto('http://95.216.162.109:443/setprintroutes/'+params)
       const options = {
         //path: 'pdf/filename.pdf',
         format: 'A4',
@@ -375,7 +375,7 @@ exports.SetPrintFileRoutes = async (req, res) => {
                   })
           
             const page = await browser.newPage()   
-            await page.goto('http://95.216.162.109/api/v1/setsinglewaste/'+id)
+            await page.goto('http://95.216.162.109:443/setsinglewaste/'+id)
             const buffer = await page.pdf({format: 'A4'})
             res.type('application/pdf')
             browser.close()
@@ -468,7 +468,7 @@ exports.SetPrintFileRoutes = async (req, res) => {
                   })
           
             const page = await browser.newPage()   
-            await page.goto('http://95.216.162.109/api/v1/setsingleroute/'+id)
+            await page.goto('http://95.216.162.109:443/setsingleroute/'+id)
             const buffer = await page.pdf({format: 'A4'})
             res.type('application/pdf')
             browser.close()

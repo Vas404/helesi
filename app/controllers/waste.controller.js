@@ -282,7 +282,7 @@ exports.Print = (req, res) => {
           id:id} 
          })
        .then (data => {
-        fetch('http://95.216.162.109/api/v1/print', {
+        fetch('http://95.216.162.109:443/print', {
           method: 'post',
           body:    JSON.stringify(data),
           headers: { 'Content-Type': 'application/json' }
