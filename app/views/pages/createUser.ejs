@@ -62,10 +62,10 @@
   <body class="xr_bgb15">
     <div class="container mb-4 xr_bgb15">
       <div class="topnav" id="myTopnav">
-        <a class="logo" href="http:\/\/95.216.162.109:443"
+        <a class="logo" href="http://localhost:4044/api/v1"
           ><img src="images/103.jpg" alt="helesi" title=""
         /></a>
-        <a onclick = "makeRequest('http:\/\/95.216.162.109:443/adminMenu','GET').then(res => res.text()).then(htmlStr => {
+        <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/adminMenu','GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
@@ -168,7 +168,7 @@
             var token2 = JSON.parse(token)
             var lastToken = token2.token
             $.ajax({
-              url: "/signup",
+              url: "/api/v1/signup",
               data: form,
               type: "POST",
               dataType: "json",
@@ -188,7 +188,7 @@
                   console.log("prot1");
                   //console.log(form1);
                   $.ajax({
-                    url: "/sendemail",
+                    url: "/api/v1/sendemail",
                     data: form,
                     type: "POST",
                     dataType: "json",
@@ -224,7 +224,7 @@
                   $("#createw")[0].reset();
                   //var button = document.getElementById('success').click();
                   alert("Επιτυχής Δημιουργία Χρήστη");
-                  window.location.href = "/adminMenu";
+                  window.location.href = "/api/v1/adminMenu";
 
                   return false;
                 } else if (result === false) {

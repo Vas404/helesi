@@ -75,7 +75,7 @@ exports.create = (req, res) => {
                   {
                     value={
                       hash:hash_waste,
-                      address:"http://95.216.162.109/checkqr/"
+                      address:"http://localhost:62625/checkqr/"
                     }
       
                     res.send(value);
@@ -149,7 +149,7 @@ exports.findOne = (req, res) => {
   //Searches if the hash exists in the blockchain
   var hash = req.params.id; 
   //LTO fetch get request
-  fetch('http://95.216.162.109/api/users/'+hash)
+  fetch('http://localhost:62627/api/users/'+hash)
     .then(response => response.json())
       .then(data=>{
         if(data){
@@ -282,7 +282,7 @@ exports.Print = (req, res) => {
           id:id} 
          })
        .then (data => {
-        fetch('http://95.216.162.109:443/print', {
+        fetch('http://localhost:4044/api/v1/print', {
           method: 'post',
           body:    JSON.stringify(data),
           headers: { 'Content-Type': 'application/json' }

@@ -589,6 +589,11 @@
   dependencies:
     "follow-redirects" "^1.14.0"
 
+"b4a@^1.0.1":
+  "integrity" "sha512-1aCQIzQJK7G0z1Una75tWMlwVAR8o+QHoAlnWc5XAxRVBESY9WsitfBgM5nPyDBP5HrhPU1Np4Pq2Y7CJQ+tVw=="
+  "resolved" "https://registry.npmjs.org/b4a/-/b4a-1.5.3.tgz"
+  "version" "1.5.3"
+
 "balanced-match@^1.0.0":
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
@@ -640,6 +645,22 @@
     "buffer" "^5.5.0"
     "inherits" "^2.0.4"
     "readable-stream" "^3.4.0"
+
+"blake2b-wasm@^2.4.0":
+  "integrity" "sha512-S1kwmW2ZhZFFFOghcx73+ZajEfKBqhP82JMssxtLVMxlaPea1p9uoLiUZ5WYyHn0KddwbLc+0vh4wR0KBNoT5w=="
+  "resolved" "https://registry.npmjs.org/blake2b-wasm/-/blake2b-wasm-2.4.0.tgz"
+  "version" "2.4.0"
+  dependencies:
+    "b4a" "^1.0.1"
+    "nanoassert" "^2.0.0"
+
+"blake2b@^2.1.4":
+  "integrity" "sha512-AyBuuJNI64gIvwx13qiICz6H6hpmjvYS5DGkG6jbXMOT8Z3WUJ3V1X0FlhIoT1b/5JtHE3ki+xjtMvu1nn+t9A=="
+  "resolved" "https://registry.npmjs.org/blake2b/-/blake2b-2.1.4.tgz"
+  "version" "2.1.4"
+  dependencies:
+    "blake2b-wasm" "^2.4.0"
+    "nanoassert" "^2.0.0"
 
 "bluebird@^3.7.2":
   "integrity" "sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg=="
@@ -2261,6 +2282,11 @@
   "version" "1.1.2"
   dependencies:
     "lru-cache" "^4.1.3"
+
+"nanoassert@^2.0.0":
+  "integrity" "sha512-7vO7n28+aYO4J+8w96AzhmU8G+Y/xpPDJz/se19ICsqj/momRbb9mh9ZUtkoJ5X3nTnPdhEJyc0qnM6yAsHBaA=="
+  "resolved" "https://registry.npmjs.org/nanoassert/-/nanoassert-2.0.0.tgz"
+  "version" "2.0.0"
 
 "negotiator@0.6.3":
   "integrity" "sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg=="

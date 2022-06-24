@@ -47,14 +47,14 @@
    
     <div class="container">
       <div class="topnav" id="myTopnav">
-        <a class="logo" onclick="makeRequest(`http:\/\/95.216.162.109:443`,'GET').then(res => res.text()).then(htmlStr => {
+        <a class="logo" onclick="makeRequest(`http:\/\/localhost:4044/api/v1`,'GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
           });"
           ><img src="images/103.jpg" alt="helesi" title=""
         /></a>
-        <a onclick = "makeRequest('http:\/\/95.216.162.109:443/usersMenu','GET').then(res => res.text()).then(htmlStr => {
+        <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/usersMenu','GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
@@ -217,7 +217,7 @@
 
         //ajax GET request to DB with hash A
         $.ajax({
-          url: "/routesreport",
+          url: "/api/v1/routesreport",
           type: "POST",
           dataType: "json",
           headers: { startday: startday, endday: endday },
@@ -375,7 +375,7 @@
         // var afm = document.getElementById("afm").value;
         //ajax GET request to DB with hash A
         $.ajax({
-          url: "/routesreport",
+          url: "/api/v1/routesreport",
           type: "POST",
           dataType: "json",
           headers: { startday: startday, endday: endday },
@@ -532,7 +532,7 @@
         // var afm = document.getElementById("afm").value;
         //ajax GET request to DB with hash A
         $.ajax({
-          url: "/routesreport",
+          url: "/api/v1/routesreport",
           type: "POST",
           dataType: "json",
           headers: { startday: startday, endday: endday },
@@ -661,7 +661,7 @@
         // endday=table.rows[length-1].cells[1].innerHTML;
         console.log(startday);
         console.log(endday);
-        var pdfsrc = "/printroutes";
+        var pdfsrc = "/api/v1/printroutes";
         //sent a htmlrequest to server
         xhr.open("POST", pdfsrc, true);
         //server response with a arraybuffer
@@ -699,7 +699,7 @@
         // endday=table.rows[length-1].cells[1].innerHTML;
         //console.log(startday);
         //console.log(endday);
-        var pdfsrc = "/printsingleroutes";
+        var pdfsrc = "/api/v1/printsingleroutes";
         //sent a htmlrequest to server
         xhr.open("POST", pdfsrc, true);
         //server response with a arraybuffer

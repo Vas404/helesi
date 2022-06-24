@@ -40,10 +40,10 @@ if( process.env.NODE_ENV == 'production' ){
 }
 
 const api = process.env.API_URL
-var corsOptions = [`http://95.216.162.109:${port}`,
-                   `http://95.216.162.109:3000`,
-                   `http://95.216.162.109:62622`,
-       {  origin:  `http://95.216.162.109:62622`}]
+var corsOptions = [`http://localhost:${port}`,
+                   `http://localhost:3000`,
+                   `http://localhost:62622`,
+       {  origin:  `http://localhost:62622`}]
 
 
 
@@ -85,6 +85,9 @@ app.get(`${api}/map`, async ( req, res, next )=>{
     res.send(JSON.stringify(data))
 })
 
+app.get(`${api}/`,async (req,res, next)=>{
+    res.render('pages/index')
+})
 
 
 app.listen( port,() => {

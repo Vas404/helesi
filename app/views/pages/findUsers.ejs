@@ -71,14 +71,14 @@ else {
       <div class="container xr_bgb15">
 
       <div class="topnav" id="myTopnav">
-        <a class="logo" onclick = "makeRequest('http:\/\/95.216.162.109:443/','GET').then(res => res.text()).then(htmlStr => {
+        <a class="logo" onclick = "makeRequest('http:\/\/localhost:4044/api/v1/','GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
           })"
           ><img src="images/103.jpg" alt="helesi" title=""
         /></a>
-        <a onclick = "makeRequest('http:\/\/95.216.162.109:443/adminMenu','GET').then(res => res.text()).then(htmlStr => {
+        <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/adminMenu','GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
@@ -104,7 +104,7 @@ else {
         </div>
         <br /><br />
       </div>
-      <a onclick = "makeRequest('http:\/\/95.216.162.109:443/adminMenu','GET').then(res => res.text()).then(htmlStr => {
+      <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/adminMenu','GET').then(res => res.text()).then(htmlStr => {
         document.open();
         document.write(htmlStr);
         document.close();
@@ -146,7 +146,7 @@ else {
             const lastToken = token2.token
       
           $.ajax({
-          url: "/deleteuser",
+          url: "/api/v1/deleteuser",
           data: info,
           type: "POST",
           dataType: "json",
@@ -185,7 +185,7 @@ else {
             console.log(`EDW TO TOKEN: ${token2.token}`)
             const lastToken = token2.token
         $.ajax({
-          url: "/employees",
+          url: "/api/v1/employees",
           type: "POST",
           data: info,
           dataType: "json",
@@ -250,7 +250,7 @@ else {
           error: function (result) {
             if ((result.status = 403)) {
               window.alert("Η συνεδρία Έληξε!");
-              window.location.href = "/";
+              window.location.href = "/api/v1";
             } else {
               window.alert("Δεν υπάρχουν χρήστες");
               window.location.reload();

@@ -213,7 +213,7 @@ exports.routesReport = (req, res) => {
         
           const page = await browser.newPage() 
           await page.setDefaultNavigationTimeout(0)
-          await page.goto('http://95.216.162.109:443/setprintroute/'+params)
+          await page.goto('http://localhost:4044/api/v1/setprintroute/'+params)
         
           const options = {
             //path: 'pdf/filename.pdf',
@@ -336,7 +336,7 @@ exports.routesReport = (req, res) => {
             });
           
             const page = await browser.newPage() ;   
-            await page.goto('http://95.216.162.109:443/setsingleroute/'+id,{
+            await page.goto('http://localhost/api/v1/setsingleroute/'+id,{
               waitUntil: 'load',
               //timeout: 0
             });

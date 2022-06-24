@@ -58,14 +58,14 @@
       }
     </style>
   </head>
-  
+
   <body>
     <div class="container">
       <div class="topnav" id="myTopnav">
-        <a class="logo" href="http://95.216.162.109:443"
+        <a class="logo" href="http://localhost:4044/api/v1"
           ><img src="images/103.jpg" alt="helesi" title=""
         /></a>
-        <a onclick = "makeRequest('https:\/\/95.216.162.109:443/waste','GET').then(res => res.text()).then(htmlStr => {
+        <a onclick = "makeRequest('http:\/\/localhost:4044/api/v1/waste','GET').then(res => res.text()).then(htmlStr => {
           document.open();
           document.write(htmlStr);
           document.close();
@@ -174,13 +174,13 @@
           </div>
           <div class="contact-form-buttons">
             <a 
-            onclick = "makeRequest('https:\/\/95.216.162.109:443/addwastes','GET').then(res => res.text()).then(htmlStr => { document.open();
+            onclick = "makeRequest('http:\/\/localhost:4044/api/v1/addwastes','GET').then(res => res.text()).then(htmlStr => { document.open();
               document.write(htmlStr);
               document.close();
             })"
                style="color: #ffffff;margin-right: 10px;padding-top: 10px;" class="button_1">Clear</a>
             <button
-            onclick = "makeRequest('https:\/\/95.216.162.109:443/addwastes','GET').then(res => res.text()).then(htmlStr => { document.open();
+            onclick = "makeRequest('http:\/\/localhost:4044/api/v1/addwastes','GET').then(res => res.text()).then(htmlStr => { document.open();
               document.write(htmlStr);
               document.close();
             })" 
@@ -245,7 +245,7 @@ console.log(form)
             var token2 = JSON.parse(token)
             var lastToken = token2.token 
         $.ajax({
-          url: "/createWaste",
+          url: "/api/v1/createWaste",
           data: form,   
           type: "POST",
           dataType: "json",

@@ -83,7 +83,7 @@
   <h3 class="xr_tc Heading_1 Heading_2 xr_s6" style="left: -125.43px; top: -25.65px; width: 251px;margin:0;">Management</h3>
  </div>
  <div class="xr_txt Heading_1 Heading_3 xr_s7" style="position: absolute; left:1059px; top:49px; width:40px; height:10px;">
-  <h3 class="xr_tr Heading_1 Heading_3 xr_s7" style="left: -43.74px; top: -12.83px; width: 44px;margin:0;"><a class="link-admin" target="_parent" onclick="makeRequest('http:\/\/95.216.162.109:443/','GET').then(res => res.text()).then(htmlStr => {
+  <h3 class="xr_tr Heading_1 Heading_3 xr_s7" style="left: -43.74px; top: -12.83px; width: 44px;margin:0;"><a class="link-admin" target="_parent" onclick="makeRequest('http:\/\/localhost:4044/api/v1/','GET').then(res => res.text()).then(htmlStr => {
     document.open();
     document.write(htmlStr);
     document.close();
@@ -95,7 +95,7 @@
   <span class="xr_tc Normal_text Heading_4 xr_s2" style="left: 100.32px; top: -14.96px; width: 256px;"><a href="https://aratos.net" target="_blank" onclick="return(xr_nn());" onmousemove="xr_mo(this,72)" ><span class="Normal_text Heading_4 xr_s2">Copyright © Aratos.net 2020-2021</span></a></span>
  </div>
  </div>
- <a target="_self" onclick="makeRequest('http:\/\/95.216.162.109:443/findUsers','GET').then(res => res.text()).then(htmlStr => {
+ <a target="_self" onclick="makeRequest('http:\/\/localhost:4044/api/v1/findUsers','GET').then(res => res.text()).then(htmlStr => {
     document.open();
     document.write(htmlStr);
     document.close();
@@ -105,7 +105,7 @@
   <img class="xr_rn_ xr_rnsp_ xr_ap xr_ro xr_ro0 xr_tt0" src="images/305.png" alt="Display Active Users" title="" onmousemove="xr_mo(this,72)" style="left:310px;top:400px;width:500px;height:60px;"/>
  </a>
 
- <a target="_self" onclick="makeRequest('http:\/\/95.216.162.109:443/createUser','GET').then(res => res.text()).then(htmlStr => {
+ <a target="_self" onclick="makeRequest('http:\/\/localhost:4044/api/v1/createUser','GET').then(res => res.text()).then(htmlStr => {
     document.open();
     document.write(htmlStr);
     document.close();
@@ -136,7 +136,7 @@
   <h3 class="xr_tc Heading_1 Heading_2 xr_s6" style="left: -125.43px; top: -25.65px; width: 251px;margin:0;">Select Report</h3>
  </div>
  <div class="xr_txt Heading_1 Heading_3 xr_s7" style="position: absolute; left:463px; top:55px; width:40px; height:10px;">
-  <h3 class="xr_tr Heading_1 Heading_3 xr_s7" style="left: -43.74px; top: -12.83px; width: 44px;margin:0;"><a target="_parent" onclick="makeRequest('http:\/\/95.216.162.109:443/adminMenu','GET').then(res => res.text()).then(htmlStr => {
+  <h3 class="xr_tr Heading_1 Heading_3 xr_s7" style="left: -43.74px; top: -12.83px; width: 44px;margin:0;"><a target="_parent" onclick="makeRequest('http:\/\/localhost:4044/api/v1/adminMenu','GET').then(res => res.text()).then(htmlStr => {
     document.open();
     document.write(htmlStr);
     document.close();
@@ -148,7 +148,7 @@
   <span class="xr_tc Normal_text Heading_4 xr_s2" style="left: 100.32px; top: -14.96px; width: 256px;"><a href="https://aratos.net" target="_blank" onclick="return(xr_nn());" onmousemove="xr_mo(this,78)" ><span class="Normal_text Heading_4 xr_s2" >Copyright © Aratos.net 2020-2021</span></a></span>
  </div>
  </div>
- <a  target="_self" onclick="makeRequest('http:\/\/95.216.162.109:443/findUsers','GET').then(res => res.text()).then(htmlStr => {
+ <a  target="_self" onclick="makeRequest('http:\/\/localhost:4044/api/v1/findUsers','GET').then(res => res.text()).then(htmlStr => {
     document.open();
     document.write(htmlStr);
     document.close();
@@ -161,7 +161,7 @@
   <img class="xr_rn_ xr_rnsp_ xr_ap" src="images/221.png" alt="Update Database" title="" onmousemove="xr_mo(this,78,event)" style="left:15px;top:450px;width:450px;height:60px;"/>
   <img class="xr_rn_ xr_rnsp_ xr_ap xr_ro xr_ro0 xr_tt0" src="images/224.png" alt="Update Database" title="" onmousemove="xr_mo(this,78)" style="left:15px;top:450px;width:450px;height:60px;"/>
  </a>
- <a  target="_self" onclick="makeRequest('http:\/\/95.216.162.109:443/createUser','GET').then(res => res.text()).then(htmlStr => {
+ <a  target="_self" onclick="makeRequest('http:\/\/localhost:4044/api/v1/createUser','GET').then(res => res.text()).then(htmlStr => {
     document.open();
     document.write(htmlStr);
     document.close();
