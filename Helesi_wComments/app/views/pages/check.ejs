@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+	<% include ../partials/navigationMenu %>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+
+<form id= "find" class="contact100-form validate-form">
+				<span class="contact100-form-title">Αναζήτηση εγκυρότητας εγγράφου στο Μητρώο</span>
+				<!--input id="onoma" type="text" name="text" value=""-->
+				
+
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input200" data-validate="Please Type Your Name">
+					<span class="label-input100">Αριθμός Blockchain Πιστοποίησης Εγγράφου*</span>
+					<input class="input200" type="text" name="hash" value="" id="hash">
+				</div>
+
+				<!--Submit Button start-->
+
+				<div class="container-contact100-form-btn-custom">
+					<button class ="contact100-form-btn"id="findall">
+						<span>
+							Αναζήτηση
+							 
+						</span>
+					</button>
+				</div>
+				
+				<!--Submit Button end-->
+            </form>
+                
+				<div id="show_table"style="overflow-x:auto; display: none; ">
+					<br>
+					<h2> Αποτελέσματα Αναζήτησης</h2>
+					<table id="table">
+						<tr style="background-color: rgb(155, 161, 161);">
+							<th>Αύξων Αριθμός</th>
+							<th>Εταιρική Επωνυμία</th>
+							<th>Όνομα</th>
+							<th>Επώνυμο</th>
+							<th>Όνομα Πατέρα</th>
+							<th>Διεύθυνση</th>
+							<th>Τομέας Απασχόλησης</th>
+							<th>Υπογράφων Οργανισμός</th>
+							<th>Ταυτότητα Υπογράφοντα</th>
+							<th>Ημερομηνία Λήξης</th>
+							<th>Ημερομηνία Δημιουργίας</th>
+							<th>Ημερομηνία Ανανέωσης</th>
+							<th>Αριθμός Πρωτοκόλλου Δόμησης</th>
+						</tr>
+                	</table>
+				</div>
+			
+				<button class ="contact100-form-btn-print" id="print"  style="display: none;">
+					<span>
+						Εκτύπωση
+						<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true" ></i>
+					</span>
+				</button>
+
+                <div id="getResultDiv">
+                   <ul class="list-group">
+                   </ul>
+                 </div>
+        	</div>
+        </div>
+
+
+
+<!--===============================================================================================-->
+  
+    <script type="text/javascript">
+
+
+		// function
+
+
+		// $(document).ready(function(){
+		// $("#find").submit(function(){
+	$( "#findall" ).click(function() {
+		var hash = document.getElementById('hash').value;
+		if(hash !=""){
+				
+			$.ajax({
+					url: '/check_routes/'+hash, 
+					type: "GET", 
+					dataType: 'json',
+					success: function (result) {
+						if (result!=false){
+    		            	// window.alert("success");
+    		            	$('#table tr').not(':first').remove();
+							$('#table ul').empty();
+							document.getElementById("show_table").style.display="block";
+							document.getElementById("print").style.display="block";
+    		            	   //$.each(result, function(i, user){
+							
+    		            	for(var i=1; i<$(result).length+1; i++){
+								var row = table.insertRow(i);
+								var id = row.insertCell(0);
+								id.innerHTML = result[i-1].id;
+								var company_name = row.insertCell(1);
+								company_name.innerHTML = result[i-1].company_name;
+								var owner_name = row.insertCell(2);
+								owner_name.innerHTML = result[i-1].owner_name;
+								var owner_surname = row.insertCell(3);
+								owner_surname.innerHTML = result[i-1].owner_surname;
+								var father_name = row.insertCell(4);
+								father_name.innerHTML = result[i-1].father_name;
+								var address = row.insertCell(5);
+								address.innerHTML = result[i-1].address;
+								var business_sector = row.insertCell(6);
+								business_sector.innerHTML = result[i-1].business_sector;
+								var sig_org = row.insertCell(7);
+								sig_org.innerHTML = result[i-1].sig_org;
+								var sig_id = row.insertCell(8);
+								sig_id.innerHTML = result[i-1].sig_id;
+								var exp_date = row.insertCell(9);
+								const initdate = new Date(result[i-1].exp_date)
+								const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: '2-digit' }) 
+								const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(initdate ) 
+								var date = (`${day}-${month}-${year }`);
+								exp_date.innerHTML = date;
+											// var dom_id = row.insertCell(6);
+											// dom_id.innerHTML = result[i-1].dom_id;
+								var dom_date = row.insertCell(10);
+								const initdate3 = new Date(result[i-1].dom_date)
+								const dateTimeFormat3 = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: '2-digit' }) 
+								const [{ value: month3 },,{ value: day3 },,{ value: year3 }] = dateTimeFormat3 .formatToParts(initdate3 ) 
+								var dom_d = (`${day3}-${month3}-${year3 }`);
+								dom_date.innerHTML = dom_d;
+								var createdAt = row.insertCell(11);
+								const initdate1 = new Date(result[i-1].createdAt)
+								const dateTimeFormat1 = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: '2-digit' }) 
+								const [{ value: month1 },,{ value: day1 },,{ value: year1 }] = dateTimeFormat1 .formatToParts(initdate1 ) 
+								var created = (`${day1}-${month1}-${year1 }`);
+								createdAt.innerHTML = created;
+								var updatedAt = row.insertCell(12);
+								const initdate2 = new Date(result[i-1].updatedAt)
+								const dateTimeFormat2 = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: '2-digit' }) 
+								const [{ value: month2 },,{ value: day2 },,{ value: year2 }] = dateTimeFormat2 .formatToParts(initdate2 ) 
+								var updated = (`${day2}-${month2}-${year2 }`);
+								updatedAt.innerHTML = updated;
+
+    		            	}
+					    }else{
+							document.getElementById("show_table").style.display="none";
+							document.getElementById("print").style.display="none";
+							window.alert("Δεν υπάρχει αντίστοιχη καταχώριση")
+						} 	
+					
+					},
+					error:function(result){
+						window.alert("Δεν υπάρχει αντίστοιχη καταχώριση");
+                    }
+                    
+				}); 
+		}else{
+			window.alert("Παρακαλώ Συμπληρώστε ότα τα Πεδία");
+            
+		}
+	    return false;
+	});
+		
+
+	function print(){
+	var xhr = new XMLHttpRequest();
+			table=document.getElementById("table");
+			id=table.rows[1].cells[0].innerHTML;
+			var pdfsrc = '/api/users/doc/'+id;
+			//sent a htmlrequest to server
+			xhr.open('GET', pdfsrc, true);
+			//server response with a arraybuffer
+			xhr.responseType = "arraybuffer";
+
+			xhr.addEventListener("load", function (evt) {
+				var data = evt.target.response;
+			// convert arraybuffer into pdf	
+			if (this.status === 200) {
+				const blob = new Blob([data], {type: 'application/pdf'});
+				const blobURL = URL.createObjectURL(blob);
+				window.open(blobURL)	
+						      
+			    }
+			}, false);
+		  
+				xhr.send();
+		}
+		$( "#print" ).click(function() {
+			print();
+		})
+	</script>
+
+<!--===============================================================================================-->
+
+</body>
+<footer>
+	<% include ../partials/footer %>
+  </footer>
+</html>
