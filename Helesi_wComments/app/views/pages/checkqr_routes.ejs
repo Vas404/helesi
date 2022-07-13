@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+	<% include ../partials/navigationqr %>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+
+<form id= "find" class="contact100-form validate-form">
+				<span class="contact100-form-title">Search for document validity in the Database
+
+                </span>
+				<!--input id="onoma" type="text" name="text" value=""-->
+
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input200" data-validate="Please Type Your Name">
+					<span class="label-input100">Document Certification Blockchain Number*</span>
+					<input class="input200" type="text" name="hash" value="" id="hash">
+				</div>
+
+				<!--Submit Button start-->
+
+				<div class="container-contact100-form-btn-custom">
+					<button class ="contact100-form-btn"id="findall">
+						<span>
+							Search
+							 
+						</span>
+					</button>
+				</div>
+				
+				<!--Submit Button end-->
+            </form>
+                
+				<div id="show_table"style="overflow-x:auto; display: none; ">
+					<br>
+					<h2> Search Results</h2>
+					<table id="table">
+						<tr style="background-color: rgb(155, 161, 161);">
+							<th>Date</th>
+							<th>Hour</th>
+							<th>Vechicle</th>
+							<th>Driver</th>
+							<th>Location</th>
+							<th>Weight (KG)</th>
+							<th>Route</th>
+							<th>coords</th>	
+						</tr>
+                	</table>
+				</div>
+
+                <div id="getResultDiv">
+                   <ul class="list-group">
+                   </ul>
+                 </div>
+        	</div>
+        </div>
+
+
+
+<!--===============================================================================================-->
+  
+    <script type="text/javascript">
+
+    var url = window.location.search;
+    if(url !==""){
+        var hashURL = url.split("?")[1];
+	    console.log(hashURL);
+        document.getElementById('hash').value = hashURL;
+        // function
+        
+
+
+    } else {
+
+                    
+            }
+    // $(document).ready(function(){
+                    // $("#find").submit(function(){
+                        $( "#findall" ).click(function() {
+                    
+                    var hash = document.getElementById('hash').value;
+                
+                    if(hash !=""){
+                            
+                        $.ajax({
+                                url: '/api/users/check_routes/'+hash, 
+                                type: "GET", 
+                                dataType: 'json',
+                                success: function (result) {
+                                    if (result!=false){
+                                        // window.alert("success");
+                                        $('#table tr').not(':first').remove();
+                                        $('#table ul').empty();
+                                        document.getElementById("show_table").style.display="block";
+                                        //document.getElementById("print").style.display="block";
+                                        //$.each(result, function(i, user){
+                                        
+                                        for(var i=1; i<$(result).length+1; i++){
+                                        var row = table.insertRow(i);
+                                        var date = row.insertCell(0);
+                                        date.innerHTML = result[i - 1].date;
+                                        var time = row.insertCell(1);
+                                        time.innerHTML = result[i - 1].time;
+                                        var vehicle = row.insertCell(2);
+                                        vehicle.innerHTML = result[i - 1].vechicle;
+                                        var driver = row.insertCell(3);
+                                        driver.innerHTML = result[i - 1].driver;
+                                        var location = row.insertCell(4);
+                                        location.innerHTML = result[i - 1].location;
+                                        var kg = row.insertCell(5);
+                                        kg.innerHTML = result[i - 1].kg;
+                                        var routebinid = row.insertCell(6);
+                                        routebinid.innerHTML = result[i - 1].routebinid;
+                                        var coords = row.insertCell(7);
+                                        coords.innerHTML = result[i - 1].coords;
+                                        }
+                                    }else{
+                                            window.alert("No entry available")
+                                    } 	
+                                
+                                },
+                                error:function(result){
+                                    window.alert("No entry available");
+                                }
+                                
+                            }); 
+                    }else{
+                        window.alert("Please fill in all the gaps");
+                        
+                    }
+                    return false;
+                });
+
+	</script>
+
+<!--===============================================================================================-->
+
+</body>
+<footer>
+	<% include ../partials/footerqr %>
+  </footer>
+</html>

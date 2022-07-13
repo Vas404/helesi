@@ -1,0 +1,201 @@
+//testing with xhr requests 
+###########
+GET https://helesiauth-zoqonswvna-uc.a.run.app/api/v1/test
+
+
+##########
+POST https://95.216.162.109/api/v1/signup HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImFkbWluSWQiOiJBcmF0b3MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTQ2ODg1NzQ1NTEsImV4cCI6MTY1NDY4OTc4NDE1MX0.m8m7kGyxZP0aI_3LB_vO4qBkApjDHKiOxSm82jwLT2Uk4ht3LvagrTXDBvN1Tabd_JYiKh5tBDWGxoenCp8umuFc60ihoQ73eI99I-9aZ2aiFq0kIkcaOHjT_-XpXGr8Zw15e6Y6YBHg7-duEUynYcBmEEwNCzi6Tsnlf_kE5IUEQ88dyiclO2l54uNLmPyRqmIaQOyGzYDvjM3tkYNFmWkOy7lEuFOqLFIZULx3Zio0BIZhAYoLR5madvliDC2K-12PYx77GCEZTsTDAKBRRx1hI6stnKYTGy2ODRAWj3QCSEm0Ake-a0nVNfvC7GLHbts4DdDkA7cib2sPQV2NZp9yiQ3erjQyUzbdb-5xJpRDHsPIz7axFn1fHItXMWm16GPewSPGHbHsruR8lacwDs400Au7EcqfKhIvQ_PXXuvB5iM24wpOKyUwfeozrpd1tVxAliNX5GgRYUYBLMm_0p45TFccEBqexiG1rwgyXDpXD7oidaxqc-CV9nBbJypt70ycWAaDJGmy3tU4im_a_tbgp60XF7fJA9atDMu3neaU4VKQFnfjpM0nXcvW7XDDt_vhXHWaCX1c6TY42DbYr4IRUzX5gL4J2YXhzs263sqLogsEDfnPiu8kblVePZ6Ha9PbOyuaJSqmhIaamAs0-l7FhY6AzxvjDnnZ6CeuPC0
+Content-Type: application/json
+      
+{
+    "username": "user2",
+    "email": "simpleuserto2delete@devtest.gr",
+    "name": "simple",
+    "surname": "usertodelte",
+    "password": "1"
+
+}
+#####
+GET https://95.216.162.109/api/v1/users HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYWRtaW5JZCI6IkFyYXRvcyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY1NDY4NDM0NjM5MiwiZXhwIjoxNjU0Njg1NTU1OTkyfQ.bsJk0Bd23y0fuFSaODlDqUELG7_Bgg1hiQPYzELpqacjwIoC676tBLmc34O9AegsShCJhtSB560b0tVIRGfNttZwA_ZMtJIuUXeUNMuS0tzQga834my_EIUS6rqeOYI4T3snkaPgNbLbz9buTFZCvqc0CeLbFdUKZ7vUxjyvhizXMn1djWLdiaq93lNtD3UwTHtpj2pVJ8F30sq3_Re06Zj85ixo1on6aQEYMmm4A2DziaAOlU-ij9Gf6NXXWjQ9Pyf-uX2MWAlwSDhB4bTVd1Fy_65D9lsfWi7OteM09ZoRZHtm0EylQ5XE32TbPAC2ePao09rwSggaRuXs5y7kyzGVJgWnAnVA3E0UndWQ7CVMeoc7oHmalSFEfqxWspcqqIEs-QbptlNgJ77wHxu8p3TlVcyiJOm1iHBdrayfW7UdxrFmYyWeQY0JqVSIoPH-pXr1eS5OtpRtjzrpgWXxwkEDuA-W6ppF13uxDDNLY9yrQqB-_E_QSrzsItPQBQgoxbJEoI-x1BwIUsdRpN2-kO_L--F3f7qKVC7fIcYjd0597e2HFGPDg5CNrqFsT4cab5oCrBiNHD23uThzbK84uvzh9i9BTXJqvCXM8LPhtuuN55RRaCsYPlZPBGrkXwsAhyZbLVrQre0QPKJ-UXVcnhotD1gkKAgMRn7-64cQX0w
+Content-Type:  application/json
+
+
+#####
+
+
+#####
+
+POST https://95.216.162.109/api/v1/login HTTP/1.1
+Content-Type:  application/json
+
+{
+    "username": "user",
+    "password": "1"
+    }
+
+
+#######
+GET http://localhost:4044/api/v1/403 HTTP/1.1
+
+#######
+GET http://localhost:4044/api/v1/viewAdmins HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidXNlciIsImFkbWluSWQiOiJhZG1pbiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNjUyNzcyNDk3NTE4LCJleHAiOjE2NTI3NzM3MDcxMTh9.PbMRGd340hA5as-R4vJzgjVggVAnZV_B3aENB-RHQEN1UiNBuZlR4cYD_9Cjlo5KOq-r2vwc7sfPspU7Gfe5m0J6gvgbBF0g-opL9IvHmRP-ciotWRXUDeFasAZ6FuGJHrVytrM17mA-p8gDGAPDJeIcjUR8bzGAY8lfyhco1xql08CW9PsBzhJOPjUfMumd1MaxYFg7V8KgY81pqo9KPAv9__jmBM6l-jYHsCivIHUsgG2SVa_YoL9EuQ7d65r3Mu0QYcRKoPxVjI8PwgsJ5d9-J9j5Uuoink6UPth6LLksdOniAVyjEEPgVUdrbRbquWHHCH-qh5_F3gvKiN5hD_CRrYPD3xQAByRpj1K4iZXrDtHOl3Pdro2UcO2LgsOa4joZodpzRsCOMdL9wkcREA-cpzBwjOWNiE5zW82PUNadn9mWeMJmyQcVXUcsYEy-vHuR4j5H2b3Rmnj4J_JMhdhr31fbaM9tMJK4NiencGc2xaYZCW7hOGeSjbDB4PuD0gxse9huaxpvahtgK2ZdqL71G-0plNP0V89mB6ogWJR4Q9YYEUSf0a3aBMowyyzfXtLlSwHRTC0JRMz0RGYayTLSEm2z7I7jfMybgnauprsQ173y2CjohTkNa662KGiCNRxwJDsZDw0725ozxKcghaoOdUVdnSiiTzNUAPhcgSc
+
+
+
+#########
+
+POST http://localhost:4044/api/v1/updateUser/2 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJ1c2VybmFtZSI6ImFkbWluMSIsImFkbWluSWQiOiJBcmF0b3MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NTI0NDYyMTE5NjUsImV4cCI6MTY1MjQ0NzQyMTU2NX0.FLwF3t_qKkUEoDnzIUTKF_ptpj_n-YRfyvTaNydy_fN4LgZQehiVOWHrPxeeMiTr0_1gfk4CeKWIpc3QqrHhiBNpW0d4WLN2pAqIZoKLHGSHO3WqqMQ4VsMBsvH_JWlJbAwy8VbGYvD__dT8HR_QQB5SNn7T0jHai6zHEHKvyc3udH3ORJ0KXS35GTfLgzis-dqghYzNj8ZEtJPqHfEmx2DRgyKaNOgyhjn68iFnfdICV6vdtWb97Zzj9DZyMp64K9R5InQRpVhr07mF8Az0pdJ1FT5QnW0iwogIYtDQeAwz6IQnOD3I29X6m4HqFgvHVAEBGFE9Zj3sFsdv3awpyoL3EvM9IEdVCJiL2uI00Q1Jvnz2EualuAaB1DRiCBBx6a8t7NXbxI95516ZiL4tQGEX97AuCky3eRn3ZVPS9S_a0zdSaqmbpMU2VnCjxycVM60wKPa_tf2CQwhC9dlCJFut4I_VVKq6-jyvVN8evJXigk6GrrKmuZcoxUffhL8s6gQfSmZ0yQYj_NL09XV4_AJ0ZSd7wF3JlWHl7oXgvPZYs-IT9RqSNxDX3EjVVMTW6nqr_4afHxhSZ_I_AJULnJck6LIHeY0Q-D8H3KOUeTUVjpGUEvwPpgSkQN9Eldq4SpqtQlrhYv3VzDCIuEwourrE2KxAczXJsSqI3M6UfqI
+
+{
+    "username": "testUpdateUser_1",
+    "email": "prepei_naEinaiMonadiko@gmail.com",
+    "name": "EnaAdiaforoName",
+    "surname": "epishsAdiaforoEmail",
+    "password": "prepeinaallazei?"
+}
+
+
+########
+
+POST http://localhost:4044/api/v1/updateAdmin/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidXNlciIsImFkbWluSWQiOiJhZG1pbiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNjUyNzcyNDk3NTE4LCJleHAiOjE2NTI3NzM3MDcxMTh9.PbMRGd340hA5as-R4vJzgjVggVAnZV_B3aENB-RHQEN1UiNBuZlR4cYD_9Cjlo5KOq-r2vwc7sfPspU7Gfe5m0J6gvgbBF0g-opL9IvHmRP-ciotWRXUDeFasAZ6FuGJHrVytrM17mA-p8gDGAPDJeIcjUR8bzGAY8lfyhco1xql08CW9PsBzhJOPjUfMumd1MaxYFg7V8KgY81pqo9KPAv9__jmBM6l-jYHsCivIHUsgG2SVa_YoL9EuQ7d65r3Mu0QYcRKoPxVjI8PwgsJ5d9-J9j5Uuoink6UPth6LLksdOniAVyjEEPgVUdrbRbquWHHCH-qh5_F3gvKiN5hD_CRrYPD3xQAByRpj1K4iZXrDtHOl3Pdro2UcO2LgsOa4joZodpzRsCOMdL9wkcREA-cpzBwjOWNiE5zW82PUNadn9mWeMJmyQcVXUcsYEy-vHuR4j5H2b3Rmnj4J_JMhdhr31fbaM9tMJK4NiencGc2xaYZCW7hOGeSjbDB4PuD0gxse9huaxpvahtgK2ZdqL71G-0plNP0V89mB6ogWJR4Q9YYEUSf0a3aBMowyyzfXtLlSwHRTC0JRMz0RGYayTLSEm2z7I7jfMybgnauprsQ173y2CjohTkNa662KGiCNRxwJDsZDw0725ozxKcghaoOdUVdnSiiTzNUAPhcgSc
+
+{
+    "username": "admin",
+    "email": "toallazwaporequestomws@gmail.com",
+    "name": "EnaAdiaforoNamegiaAdmin",
+    "surname": "epishsAdiaforoEmail",
+    "password": "1"
+}
+
+
+########
+GET http://localhost:4044/api/v1/promoteToSuperAdmin/4
+
+#####
+
+POST  http://localhost:4044/api/v1/createAdmin
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidXNlciIsImFkbWluSWQiOiJhZG1pbiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNjUzNTU3MzY3MzYyLCJleHAiOjE2NTM1NTg1NzY5NjJ9.iY_kLNFk2RP-jp1uKGjOpIaL9RJvTxBesrlYZ3MHyMtwAkow011AC4XJBuwNuBDGbsMhzU0X5wDkPPAgQmQuqgPhpwwBDeqiXkFN0cORiwPnGrzihSbS0qU7ywd6brsIAwXzLZ3u1YJgLJMebiSmFyqFHPbg9FiZ2gVdD2n8VvXZlhgCPx_3fmsQfGK-mvGuScJ29iCZg_dIQelc6Wk0OrEc7fHoE-6MHjC7A4bmeBOIk-C0klE-rSQY9cjM4FirwayBoQ1Dhh0Gt2uMD8aX6LQ1mQyu2lCs5vm6XQKirRtNiHcMIRwBEXhQD50McAkWdEv8nQ0oIzhpZz6-U2yc1S1Ra23ricfnJQHptGM2XwAxwmmjxZkBDRFUxIBMlsZa_n_y7VquQS3J8Q0zhdyzurcZQYNYKxm3XAnbtTZBd6v3yCfegTfzgZ3Wmqy9vDgurvsVDoUMEYGKRITbQmgMAIt1BhixCkkL2NjK3igG5j4m0AAHblpELxPchYeACmN3mcdqQwfG8L3y2Tyq5cKrDWvd9EhLt2I6zfw3TjmYPYNoN2pY8DenqwVgSxTcygEpE_RMCTpeZLEFNxEcUYflLbZHd4zuWrOUW4yMQseIjKgTf7YPRVFqKF5J5BxJLyhEbZRS6No6O79cFB5ag1DMOgFNEb0aSGiv104Rg8yXmR8
+
+{
+    "username": "dhmos1",
+    "email": "dhmo1s@gmail.com",
+    "name": "Hlioupolhs1",
+    "surname": "",
+    "password": "2"
+
+}
+
+#######
+
+POST http://localhost:4044/api/v1/createAdmin
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNjQ5MzMzOTIxNzk4LCJleHAiOjE2NDkzMzQwMDgxOTh9.gTCclX5JVfqtHgBy1X4Z5zsQeAgB09LQSSTthUfRTykXdx5x272onf184sOKWVV-z765J5fmt3q2hdBL_XxYpkswLf16mL3R-krT9Q7q5MHiKndmMTh2ld7kqZn-j1jdCiedgxO-pNASbNIJOW0rPiMev19eLRq6fLlHqNSOoxsIQX_PqRt6eb-9dJFyqElTeLaVql46JZESiWSFLdkEYtmnKgr9oS9095b-kkzc0KuRjuMVrySsUhk7t-7m9zwPLnNgFLisJeGaoN3CWCstCu4bKboyQFX3jhAWtR0nCyghGGtLLW1NsngwmvJqF8X_GEbkq-_b8M04WcylKjLP3W3lTe9ztkQxOB36lQs66SMdW-IwSJ1Ck3JXltfCni9Ftcer4K935tL0eDZ3nCqsxkRN8ZbU5GEzShDnsu5JHekM-aY0IAFHes4QTpN0SqIxSqwfCFrX1D-lpXpZc9x67iUpqdpBuRtbimE1MliwbaOjwVgw8FIGgB2YwuAbwJUuCS2R3PFKt6vFztOIn-DWsutr_a5UETao-U_p0r0EsN4TZmlRcsZiqB1TIvAwBieND6mY4ZvRlboSYVdmcNQiEj0Xl-2anfBM-hShDEcdVizJoIgoc4tNdNnPuUSvxG_q3BshYuAz-xuH4XMwk_ezD-DZj9Vkh8J2nvSBTh0NY-Q
+
+{
+    "username": "dhmosYm2httou",
+    "email": "dhmosYmhtto2u@gmail.com",
+    "name": "Ymmhtos",
+    "surname": "dhmos",
+    "password": "1"
+
+}
+
+
+#######
+
+
+POST  http://localhost:4044/api/v1/employees HTTP/1.1
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJhZG1pbklkIjoiQXJhdG9zIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUzOTg0NDM2MjMxLCJleHAiOjE2NTM5ODU2NDU4MzF9.TrHwc5XFHBXv6Y2Gnb7MrKTmHLyoFJ_gvFz6Tq_oZ5PHTbK73yhbTdkw5QqG8eRgoJFs1Qu5j5NUsn2GDs2Psm1uF25rO9XaLK67PL7v3DagmYY9U1-Kjs3Py4Lkgev5DQkXJs8bGMZx9WzHMkMJNF88PFws0nQUAfL7DTv41Azjb-T71vhtdbveGaY3LAPbbDlAnlVodDD42_DfhmC05iQioWLL1ZAJINKoLaWn0z3AnEtPAFcvoGByl9qYYUZjQN_msZSBAZUHcTOYJzHqKuVLFC62u1mUt0fzchbTQaNqm_njGECxO5Y03vUfhTm4JSGkhb46RHaA3DSQ6XT1qYt4rg_DyWuRbPqg8e81glgKxp2E3-U6dDxQHUCPJjDoq7IG1OlfY63Jy2kj92aIOjWx5ebf1DNvcVpScUrD_GDS7O_9Keyr8XJe1OtBm5Js2HmTj2q-VgelOlh5Px0rdAvUbXke-VpqdBZjtH7zsORQYbHLNk0m4sjfD8AmYk1GjVmcKFmpehudatVrmRWCciAgi7HD3JNaMHumBJBbu6tIdHCvuYXsyQOvY1q81UVZqIF1N4k1LOeb-JAIeT83EegsOJr1ujS67hEa8h1-RTqFLZbdiSPsWveHV-G9_OqaEu5RaGHH9NkxggWVy_9TMfZMzDVw1M-bwYhLOPAECp8
+
+#######
+
+PUT https://sqladmin.googleapis.com/v1/projects/cobalt-mantis-345609 /instances/mysql-node2/users?name=root&host=%25
+
+
+#######
+
+POST http://localhost:4044/api/v1/printWastes HTTP/1.1
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIiLCJhZG1pbklkIjoiYWRtaW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTY1NDY4NDM4MzA5MCwiZXhwIjoxNjU0Njg1NTkyNjkwfQ.cdfUoL75c13vSLe283xo7RMDFnoBhNXd91Ya5x88UKOR2TNOKU_tPuTVAPDt5_Cvq1nchy0ZxvOr-ezztIO8wU6pWmDD7Tsor4oH0seWadeBtd9Cg1IM11RHGJO6p3bbTQ5-3xzHFG_jncof1k68w88-eQEW94Fx1TGgmocDNhTuRdcCNcG1wB_unppLdQ4_rcJDjqmO8Fu9LA3OZErj1PjLJF4_wIfiAsZsTzCD2ig7cpCW5jHxQ3b9OweXeKTC9Yt8O2kVnJwTilNwTPqmUWnm9XiXCC1A3-PUJlFYcezwvpM2oOWlbWsZmXzxfRmFNft9DNfK-7I1u-LCLcIq3ZdEulVeGUYp2k4b9hfoFmFAwf5-AnoUNGEWR9EohNA8DAXjJ1MWejunc1NhSURuj6FaIQwSDlgeZvF60cIpMGQxzfan7burZ6k3cCTOTMByX58Bvs2T3fwtffXEeie8ktkIk3_PFOEYAbWkOa7GX8RUe7IyRo2SnqbcL_SqZyFqEr7-bcBSOf9tkGOPFhzJF7oSVShkirXuToAJT_HzdItLkOOMriQ2_uxDecOVwLyaOsoH4jJr6lomT-SKhSeaoK2JBWYBZmsv_Nvi1jkZfy36Oh3VE6Mv_kQxlXEqeCBy3mxgpzuSnRZFqBoxhRT0itsEHU6yGsSIpzyxIzCgbV4
+
+
+#########
+
+GET http://localhost:4044/api/v1/map HTTP/1.1
+
+
+
+##########
+POST http://localhost:4044/api/v1/testCreateAdmin HTTP/1.1
+Content-Type:  application/json
+
+{
+    "username": "admin2",
+    "email": "test2@g.com",
+    "name": "spiros",
+    "surname": "admin",
+    "password": "1"
+
+}
+
+##############
+GET http://localhost:4044/api/v1/usersMenu HTTP/1.1
+
+
+#############
+
+
+POST https://95.216.162.109/api/v1/createWaste HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsInVzZXJuYW1lIjoidXNlcjIiLCJhZG1pbklkIjoiYWRtaW4yIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTQ4NDcxMDg5MTMsImV4cCI6MTY1NDg0ODMxODUxM30.pQdqYI-3sUOUmibCZGxVHirfq4O-QyHUrJsNL8kBMZa5CvUh2wrYi-Erf6FzNBzhauVCuzGfjtEmdV-VXRzjhJ1WTTH2ysOxOqIauC_B377n2pr6AMZ5DNE_dFpe0CmDpc6FVKDfUfA6S_U7HhBKzcvZwqMT6BKhHutdVYw074GQs-lVIFFqAAX75XonlF8S7uTShBrqX-5TlGFhP7jcIAEKQ9-390y6qd2pWV3cYadwWyJjYnm3aV95ezcCoMdiuVyU9iyRsMBNX7FY_IEJBwAwqCT5qz0scpPb8i1cGBZaTBXwkpM7TJqLoMxmxs2hfJocpBs-nGX52kvqdbJwqFh1cBFl4vL9MC7q6l4f35yCmF7ltXim5aXU9nq5lQ80kQDFKk0NgosV9kukQG2592dHZQVNI4fZU7BUBsgbZRRx_vR4BNM4bvL6mLyOCtzomhHE8Ts0D_fIR5jHIljzEPPeBEfu1vfBGpi8T4hEqh5DBN-hOwOKIAybZdJzDVshGY2AuKXaAcGW-7ERhjOrfmevHHD7tK8TODJNE8ONZQ5wrF5pl5-AwjHCgflGKbDYivulEaNS-XaZcJf-swd8Bebcu_0ZQMOX5NLe_SCxDTDvDpTLzkUnOoe-HGDd6JbSgK1uFF0V_qITbjvVUYYIPdrY5Fe4wyWGL4Mv7R0jYEQ
+Content-Type:  application/json
+
+
+{
+    "date" : "2022-06-03",
+    "time" : "23:04:51",
+    "driver": "to deutero exei allages",
+    "location": "Edyuie",
+    "kg": 65,
+    "route": "kainxyuytutyhhcourgio-terma",
+    "pass": 12,
+    "vehicle": "opeltyuytuytuchxhch f1-encoding-myrizei",
+    "coords": "[12377.32387, -130.90299]",
+    "weight": "2.5967t",
+    "material": "Mcxhxyuyuhcxhxetal - Plastic", 
+    "quality": "highcxhxchcxhest",
+    "type": "dunno",
+    "adminId":"admin"
+    
+    
+
+}
+#####################
+
+
+POST https://95.216.162.109/api/v1/createRoute HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoidXNlciIsImFkbWluSWQiOiJhZG1pbiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjU1MTg5OTEyMDA5LCJleHAiOjE2NTUxOTExMjE2MDl9.LYT7lXMGxdC5EbP-QL3moOu3KIGzHPlbrGex5jOkXEjatt_dpb219YhBRuQdrs8J7H11LmrBI1EuBfQJGLiK6AXt0JUMwDiz1kGgbNbzBr-uXHWw332fK5cpwg8n1MTyQvvVJC-gepdkcP22_RdzxzkoIRhXKPvSukjGGdrGGh97I8-7MhcKEMPQwr3S7l-8k_P4ZyHUoRmmmEf5yDZxDuDq6JcvtKrH_dtDS4TM7zMcWewQkodUoeDVS2V0ttdN4CYmFz5v6Cl2ZvUSHafGbZPd4Y0QyNAivgXk12w1X47sJN07bfpewouEv_tnZnp5TN65MJDhLAqnzTayAENa9KaOrb7XiGqlQBvc4x6fJam_ieQ7N3WhKU4mq5CdUzTFPCt9h16dwrGFnvv3ROiFBlunFHko6vGiCvBwsqZ00DSkpSfxdc9u8ODvMCAPZNfoNq3JriDJ01MrbVpWX9QJXDfurnXnzPBCqmEifn06fc2GtLkrw8d46_77nOXSfab0n_1uG1IPQCzOBdoLFFciH8KYJoyUXmiHBaGBZAUXVbaqg8q0C30FSIYlyZqR5HU-8Fa6n4l760kfyfY2xBUzSMtjuF0rHr5MjC4tCEf0aCCBRFW_X7HtVXua8BsU0eAz0JVQqDaekpQWnuTqq1bsM_AA8VLA7TQ7n7zARdC12h4
+Content-Type:  application/json
+
+
+{
+    "date" : "2022-06-08",
+    "kg"   : "2533232kg",
+    "routebinid":212,
+    "coords": "37.82833,-33.7795",
+    "location": "Mariasdffsfupol",
+    "vehicle": "Opel Aasdstra 2008",
+    "driver": "AlonsasddoAllos",    
+    "time":  "20:04:12"
+
+
+}

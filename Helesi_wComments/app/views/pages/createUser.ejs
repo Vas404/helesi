@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta charset="utf-8" />
+    <meta name="Generator" content="Xara HTML filter v.9.6.2.48" />
+    <meta name="XAR Files" content="images/xr_files.txt" />
+    <title>add_user</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="images/xr_fonts.css" />
+    <script>
+      document.documentElement.className = "xr_bgh14";
+    </script>
+    <link rel="stylesheet" href="images/xr_main.css" />
+    <link rel="stylesheet" href="images/custom_styles.css" />
+    <link rel="stylesheet" href="images/xr_text.css" />
+    <script src="images/roe.js"></script>
+    <script src="images/prs4.js"></script>
+    <link rel="stylesheet" href="images/xr_all.css" id="xr_mvcss" />
+    <!--[if lt IE 9
+      ]><link rel="stylesheet" href="images/xr_ie.css"
+    /><![endif]-->
+    <script>
+      if(!window.localStorage.getItem('token'))
+      window.location.href = '/'
+      console.log(window.localStorage.getItem('token'))
+    function makeRequest( url, method ){
+      var jwtToken = localStorage.getItem('token')
+      console.log(jwtToken)
+      var token = window.localStorage.getItem('token')
+              const token2 = JSON.parse(token)
+              console.log(token2)
+              console.log(`EDW TO TOKEN: ${token2.token}`)
+              const lastToken = token2.token
+      var headers ={}
+        if(lastToken) {
+          headers['Authorization'] = lastToken
+          console.log(method)
+        }
+        return fetch(url,{
+          method: method,
+          mode: 'cors',
+          headers: headers
+        })
+    }
+    </script>
+    <script>
+      var xr_multivar = 1;
+      xr_ios_ini2();
+    </script>
+    <script src="images/jquery.js"></script>
+    <link rel="stylesheet" href="images/ani.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        margin: 0;
+        background-color: white;
+      }
+    </style>
+  </head>
+
+  <body class="xr_bgb15">
+    <div class="container mb-4 xr_bgb15">
+      <div class="topnav" id="myTopnav">
+        <a class="logo" href="https:\/\/95.216.162.109:443"
+          ><img src="images/103.jpg" alt="helesi" title=""
+        /></a>
+        <a onclick = "makeRequest('https:\/\/95.216.162.109:443/adminMenu','GET').then(res => res.text()).then(htmlStr => {
+          document.open();
+          document.write(htmlStr);
+          document.close();
+          })" class="button_1" style="color: #ffffff; width:5%">Back</a>
+      </div>
+      <h1 class="banner">Add New User</h1>
+      <div class="contact-form">
+        <form class="form" id="createUser">
+          <div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Όνομα"
+              required
+            />
+            <input
+              type="text"
+              id="surname"
+              name="surname"
+              placeholder="Επώνυμο"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Διεύθυνση email"
+              required
+            />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Όνομα Χρήστη"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Κωδικός"
+              required
+            />
+            <input
+              type="password"
+              id="pwd2"
+              name="pwd2"
+              placeholder="Επιβεβαίωση Κωδικού"
+              required
+            />
+          </div>
+        </form>
+      </div>
+      <div class="contact-form-buttons">
+        <button id="clear" style="color: #ffffff;margin-right: 10px;padding-top: 10px;" class="button_create">Clear</button>
+        <button id="create" class="button_create">Submit</button>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+      $("#clear").click(function() {
+        const inputs = document.querySelectorAll('#password, #pwd2, #email, #name, #surname, #username');
+
+        inputs.forEach(input => {
+          input.value = '';
+        });
+      })
+
+      var data;
+    
+      $("#create").click(function () {
+        console.log("create user");
+   
+        var pwd1 = document.getElementById("password").value;
+        var pwd2 = document.getElementById("pwd2").value;
+        // var birthdate = document.getElementById("birthdate").value;
+        var email = document.getElementById("email").value;
+        // var profession= document.getElementById("profession").value;
+
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+          var name = document.getElementById("name").value;
+
+          if (pwd1 === pwd2) {
+            // showProgress();
+            console.log("1")
+            form = $("#createUser").serialize();
+            //form1 ="name="+name+"&surname="+surname+"&username="+username+"&pwd1="+pwd1+"&birthdate="+birthdate+"&email="+email+"&profession="+profession;
+            //form.hash= encrypted;
+
+            //showProgress();
+            //myWindow.open();
+            console.log(form)
+            var token = localStorage.getItem("token")
+            var token2 = JSON.parse(token)
+            var lastToken = token2.token
+            $.ajax({
+              url: "/signup",
+              data: form,
+              type: "POST",
+              dataType: "json",
+              headers:{
+                "Authorization": lastToken
+              },
+              success: function (result) {
+                console.log("2")
+                console.log(result)
+
+                if (result.success === true) {
+                  console.log("3")
+
+                  // unBlock();
+                  data = document.getElementById('email').value;
+
+                  console.log("prot1");
+                  //console.log(form1);
+                  $.ajax({
+                    url: "/sendemail",
+                    data: form,
+                    type: "POST",
+                    dataType: "json",
+
+                    success: function (res) {
+                      console.log("4")
+
+                      // unBlock();
+                      console.log("prot2");
+                      if (res === true) {
+                      } else if (res === false) {
+                        // unBlock();
+                        console.log("Αποτυχία αποστολής Email");
+                        window.alert("Fail to send email");
+                      }
+                    },
+                    error: function (res) {
+                      // unBlock();
+                      //window.alert("Αποτυχία αποστολής Email");
+                    },
+                  });
+                  console.log("5")
+
+                  const inputs = document.querySelectorAll('#password, #pwd2, #email, #name, #surname, #username');
+
+                  inputs.forEach(input => {
+                    input.value = '';
+                  });
+
+                  // unBlock();
+                  window.alert("User created successfully");
+
+                  $("#createw")[0].reset();
+                  //var button = document.getElementById('success').click();
+                  alert("Επιτυχής Δημιουργία Χρήστη");
+                  window.location.href = "/adminMenu";
+
+                  return false;
+                } else if (result === false) {
+                  // unBlock();
+                  window.alert("User doesn't exist!");
+                }
+              },
+              error: function (result) {
+                // unBlock();
+                window.alert("Please fill in all the gaps");
+              },
+            });
+            console.log("6")
+
+            return false;
+          } else {
+            // unBlock();
+            window.alert("Password don't match");
+            return false;
+          }
+        } else {
+          // unBlock();
+          alert(
+            "Email address not correct!"
+          );
+          return false;
+        }
+        // unBlock();
+      });
+    
+      
+
+    </script>
+  </body>
+</html>

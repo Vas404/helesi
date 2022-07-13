@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta charset="utf-8" />
+    <meta name="Generator" content="Xara HTML filter v.9.6.2.48" />
+    <meta name="XAR Files" content="images/xr_files.txt" />
+    <title>route_reports</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="images/xr_fonts.css" />
+    <script>
+      document.documentElement.className = "xr_bgh10";
+    </script>
+    <link rel="stylesheet" href="images/xr_main.css" />
+    <link rel="stylesheet" href="images/custom_styles.css" />
+    <link rel="stylesheet" href="images/xr_text.css" />
+    <script src="images/roe.js"></script>
+    <script src="images/prs4.js"></script>
+    <link rel="stylesheet" href="images/xr_all.css" id="xr_mvcss" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyAbLzq-ePZq7BsxJe_dBspqRvsJMg6Pn8M&callback=initMap"
+            type="text/javascript" async defer></script>
+    <script>
+      var xr_multivar = 1;
+      xr_ios_ini2();
+    </script>
+    <script src="images/jquery.js"></script>
+    <link rel="stylesheet" href="images/ani.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        margin: 0;
+        background-color: white;
+      }
+    </style> 
+    
+  </head>
+  <script>
+    if(!window.localStorage.getItem('token'))
+    window.location.href = '/'
+    console.log(window.localStorage.getItem('token'))
+  function makeRequest( url, method ){
+    var jwtToken = localStorage.getItem('token')
+    
+    var token = window.localStorage.getItem('token')
+            const token2 = JSON.parse(token)
+            console.log(token2)
+            console.log(`EDW TO TOKEN sto routes.ejs: ${token2.token}`)
+            const lastToken = token2.token
+    const headers ={}
+      if(lastToken) {
+        console.log(method+'routes.ejs')
+        headers['Authorization'] = lastToken
+        
+      }
+      return fetch(url,{
+        method: method,
+        mode: 'cors',
+        headers: headers
+      })
+  }
+  </script>
+  
+
+      
+      
+   
+    <div class="container">
+      <div class="topnav" id="myTopnav">
+        <a class="logo" onclick="makeRequest(`https:\/\/95.216.162.109:443`,'GET').then(res => res.text()).then(htmlStr => {
+          document.open();
+          document.write(htmlStr);
+          document.close();
+          });"
+          ><img src="images/103.jpg" alt="helesi" title=""
+        /></a>
+        <a onclick = "makeRequest('https:\/\/95.216.162.109:443/usersMenu','GET').then(res => res.text()).then(htmlStr => {
+          document.open();
+          document.write(htmlStr);
+          document.close();
+          })" class="button_1" style="color: #ffffff; width:5%">Back</a>
+      </div>
+      <h1 class="banner">Route Reports</h1>
+      <!-- search bar -->
+	  <div id="find" class="search">
+        <button class="button_2" id="week">
+          <b>Current Week</b>
+        </button>
+        <button class="button_2" id="month">
+          <b>Current Month</b>
+        </button>
+        <div class="search-date">
+			<div class="search-labels">
+			  <div>
+				<label style="margin: 0px 0px 0px 0px" for="start">From: </label>
+				<input type="date" id="start" name="trip-start " class="date1" />
+			  </div>
+			  <div>
+				<label for="end" style="margin: 0px 0px 0px 0px">To: </label>
+				<input type="date" id="end" name="trip-start " class="date1" />
+			  </div>
+			</div>
+		  </div>
+        <button style="margin-left: 1%" class="button_2" id="range">
+          <b>Search</b>
+        </button>
+      </div>
+      <!-- create table-->
+      <div class="table">
+        <section>
+          <div
+            id="show_table"
+            style="overflow-x: auto; display: none; text-align: center"
+          >
+            <br />
+            <h2>Search Results</h2>
+            <table class="form-table" id="table" style="cursor: pointer">
+              <tr style="background-color: rgb(155, 161, 161)">
+                <th>Date</th>
+                <th>Hour</th>
+                <th>Vehicle</th>
+                <th>Driver</th>
+                <th>Location</th>
+                <th>Weight (KG)</th>
+                <th>Route</th>
+                <th>Coordinates</th>
+              </tr>
+            </table>
+          </div>
+
+          <br />
+          <button class="button_2" id="print" style="display: none" margin-bottom: 5%>
+            <b>Εκτύπωση</b>
+          </button>
+          <br>
+          <button
+          class="button_2"
+          id="csv"
+          style="display: none; margin-bottom: 5%"
+        >
+          <b>CSV</b>
+        </button>
+        <script>
+          function htmlToCSV(html, filename) {
+            var data = [];
+            var rows = document.querySelectorAll("table tr");
+
+            for (var i = 0; i < rows.length; i++) {
+              var row = [],
+                cols = rows[i].querySelectorAll("td, th");
+
+              for (var j = 0; j < cols.length; j++) {
+                row.push(cols[j].innerText);
+              }
+
+              data.push(row.join(","));
+            }
+
+            downloadCSVFile(data.join("\n"), filename);
+          }
+
+          function downloadCSVFile(csv, filename) {
+            var csv_file, download_link;
+
+            csv_file = new Blob([csv], { type: "text/csv" });
+
+            download_link = document.createElement("a");
+
+            download_link.download = filename;
+
+            download_link.href = window.URL.createObjectURL(csv_file);
+
+            download_link.style.display = "none";
+
+            document.body.appendChild(download_link);
+
+            download_link.click();
+          }
+          document
+            .getElementById("csv")
+            .addEventListener("click", function () {
+              var html = document.querySelector("table").outerHTML;
+              htmlToCSV(html, "routes.csv");
+              console.log("table")
+            });
+        </script>
+
+<body class="xr_bgb15">
+  <div id="map" style="width: 500px; height: 400px;"></div>
+  <script type="text/javascript">
+//     var locations =  locations1;
+//     for (i=0; i<=locations.length; i++){
+  function initMap(){
+ var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(37.983810, 23.727539),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    })
+  }
+    var infowindow = new google.maps.InfoWindow()
+    var marker, i
+//     for (i = 0; i < locations.length; i++) {
+       marker = new google.maps.Marker({
+         //position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+         position: new google.maps.LatLng(37.903487,23.792393),
+         map: map
+       })
+//       google.maps.event.addListener(marker, 'click', (function(marker, i) {
+//         return function() {
+//           infowindow.setContent(locations[i][0]);
+//           infowindow.open(map, marker);
+//         }
+//       })(marker, i));
+//     }
+//     }
+    
+  </script>
+
+
+       
+
+    <script type="text/javascript">
+      var startday;
+      var endday;
+     
+      $("#range").click(function () {
+        //document.getElementById("routes").style.display="none";
+        startday = document.getElementById("start").value;
+        endday = document.getElementById("end").value;
+        console.log(startday);
+        console.log(endday);
+        //set the values from the fields into variables
+
+        //ajax GET request to DB with hash A
+        $.ajax({
+          url: "/routesreport",
+          type: "POST",
+          dataType: "json",
+          headers: { startday: startday, endday: endday },
+          success: function (result) {
+            //ajax GET request to DB with hash DATA
+            if (Object.keys(result.data_report).length !== 0) {
+              //Set the result data from DB to a global variable
+              //dataprint = result;
+
+              $("#table tr").not(":first").remove();
+              $("#table ul").empty();
+
+              document.getElementById("show_table").style.display = "block";
+              document.getElementById("print").style.display = "block";
+              document.getElementById("csv").style.display = "block";
+
+              if (Object.keys(result.errors).length !== 0) {
+                var locations
+                var locations1 = [];
+
+                for (var i = 1; i < (result.data_report).length + 1; i++) {
+                  console.log("first for", i)
+                  var row = table.insertRow(i);
+                  var date = row.insertCell(0);
+                  date.innerHTML = result.data_report[i - 1].date;
+                  var time = row.insertCell(1);
+                  time.innerHTML = result.data_report[i - 1].time;
+                  var vehicle = row.insertCell(2);
+                  vehicle.innerHTML = result.data_report[i - 1].vehicle;
+                  var driver = row.insertCell(3);
+                  driver.innerHTML = result.data_report[i - 1].driver;
+                  var location = row.insertCell(4);
+                  location.innerHTML = result.data_report[i - 1].location;
+                  var kg = row.insertCell(5);
+                  kg.innerHTML = result.data_report[i - 1].kg;
+                  var routebinid = row.insertCell(6);
+                  routebinid.innerHTML = result.data_report[i - 1].routebinid;
+
+                  var coords = row.insertCell(7);
+                  coords.innerHTML = result.data_report[i - 1].coords;
+                  
+                  var test =result.data_report[i - 1].coords;
+                  console.log(`this is the test: `+test)
+                  var tested = test.split(',')[0]
+                  console.log(`this is tested:`+tested)
+                  var test1 = test.split(',')[0]
+                  console.log(test1)
+                  var test2 = test.split(',')[1]
+                  console.log(test2)
+                  test1 = parseFloat(test1)
+                  test2 = parseFloat(test2)
+                  
+                  locations1[i-1] = ['marker',test1,test2];
+                  console.log(locations1[i-1])
+
+                  locations =  locations1;
+               
+
+                 
+                  if (
+                    result.errors.indexOf(
+                      JSON.stringify(result.data_report[i - 1].id)
+                    ) !== -1
+                  ) {
+                    table.rows[i].style.backgroundColor = "white";
+                    //table.rows[i].style.color = "white";
+                    // console.log(locations1)
+                  }
+                }
+
+                $("#table")
+                  .unbind()
+                  .on("click", "tr", function (e) {
+                    e.preventDefault();
+                    var id = $(this).index();
+                    var userid = result.data_report[id - 1].id;
+                    printEntry(userid);
+                  });             
+              }
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 10,
+                  center: new google.maps.LatLng(37.983810, 23.727539),
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                  })
+                  console.log(locations)
+                  console.log(locations.length)
+                for (i=0; i<locations.length; i++){
+
+                console.log("333",locations[i][i])
+                var infowindow = new google.maps.InfoWindow();
+                var marker;
+                  marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                  })
+                  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                      infowindow.setContent(locations[i][0]);
+                      infowindow.open(map, marker)
+                    }
+                  })(marker, i))
+                
+                }
+
+
+                   
+                 
+            } else {
+              window.alert("Δεν υπάρχει αντίστοιχη καταχώριση");
+            }
+          },
+        });
+
+        return false;
+      });
+
+      $("#month").click(function () {
+        //document.getElementById("routes").style.display="none";
+        function getMonth() {
+         var date = new Date();
+          //   var day = d.getDay(),
+          // 	  diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+          // 	  var date = new Date(d.setDate(diff));
+             month = "" + (date.getMonth() + 1),
+             day = "01",
+             year = date.getFullYear();
+
+          if (month.length < 2) month = "0" + month;
+          if (day.length < 2) day = "0" + day;
+          return [year, month, day].join("-");
+        }
+
+        function currentday() {
+          var d = new Date(),
+            month = "" + (d.getMonth() + 1),
+            day = "" + d.getDate(),
+            year = d.getFullYear();
+
+          if (month.length < 2) month = "0" + month;
+          if (day.length < 2) day = "0" + day;
+          return [year, month, day].join("-");
+        }
+        const token = window.localStorage.getItem('token')
+        const token2 = JSON.parse(token)
+        startday = getMonth();
+        endday = currentday();
+        //console.log(startday);
+        //console.log(endday);
+        //set the values from the fields into variables
+        // var owner_name = document.getElementById('owner_name').value;
+        // var owner_surname = document.getElementById("owner_surname").value;
+        // var afm = document.getElementById("afm").value;
+        //ajax GET request to DB with hash A
+        $.ajax({
+          url: "/routesreport",
+          type: "POST",
+          dataType: "json",
+          headers: { startday: startday, endday: endday, ["Authorization"]: token2.token },
+          success: function (result) {
+            //ajax GET request to DB with hash DATA
+            if (Object.keys(result.data_report).length !== 0) {
+              //Set the result data from DB to a global variable
+              //dataprint = result;
+
+              $("#table tr").not(":first").remove();
+              $("#table ul").empty();
+
+              document.getElementById("show_table").style.display = "block";
+              document.getElementById("print").style.display = "block";
+              document.getElementById("csv").style.display = "block";
+
+              if (Object.keys(result.errors).length !== 0) {
+                var locations
+                var locations1 = [];
+
+                for (var i = 1; i < (result.data_report).length + 1; i++) {
+                  console.log("first for", i)
+                  var row = table.insertRow(i);
+                  var date = row.insertCell(0);
+                  date.innerHTML = result.data_report[i - 1].date;
+                  var time = row.insertCell(1);
+                  time.innerHTML = result.data_report[i - 1].time;
+                  var vehicle = row.insertCell(2);
+                  vehicle.innerHTML = result.data_report[i - 1].vehicle;
+                  var driver = row.insertCell(3);
+                  driver.innerHTML = result.data_report[i - 1].driver;
+                  var location = row.insertCell(4);
+                  location.innerHTML = result.data_report[i - 1].location;
+                  var kg = row.insertCell(5);
+                  kg.innerHTML = result.data_report[i - 1].kg;
+                  var routebinid = row.insertCell(6);
+                  routebinid.innerHTML = result.data_report[i - 1].routebinid;
+
+                  var coords = row.insertCell(7);
+                  coords.innerHTML = result.data_report[i - 1].coords;
+                  
+                  var test =result.data_report[i - 1].coords;
+                  console.log(`this is the test: `+test)
+                  var tested = test.split(',')[0]
+                  console.log(`this is tested:`+tested)
+                  var test1 = test.split(',')[0]
+                  console.log(test1)
+                  var test2 = test.split(',')[1]
+                  console.log(test2)
+                  test1 = parseFloat(test1)
+                  test2 = parseFloat(test2)
+                  
+                  locations1[i-1] = ['marker',test1,test2];
+                  console.log(locations1[i-1])
+
+                  locations =  locations1;
+               
+
+                 
+                  if (
+                    result.errors.indexOf(
+                      JSON.stringify(result.data_report[i - 1].id)
+                    ) !== -1
+                  ) {
+                    table.rows[i].style.backgroundColor = "white";
+                    //table.rows[i].style.color = "white";
+                    // console.log(locations1)
+                  }
+                }
+
+                $("#table")
+                  .unbind()
+                  .on("click", "tr", function (e) {
+                    e.preventDefault();
+                    var id = $(this).index();
+                    var userid = result.data_report[id - 1].id;
+                    printEntry(userid);
+                  });             
+              }
+            }
+          }
+        })
+      })
+
+      $("#week").click(function () {
+        //document.getElementById("routes").style.display="none";
+        function getMonday(d) {
+          d = new Date(d);
+          var day = d.getDay(),
+            diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+          var date = new Date(d.setDate(diff));
+            (month = "" + (date.getMonth() + 1)),
+            (day = "" + date.getDate()),
+            (year = date.getFullYear());
+
+          if (month.length < 2) month = "0" + month;
+          if (day.length < 2) day = "0" + day;
+          return [year, month, day].join("-");
+        }
+
+        function currentday() {
+          var d = new Date(),
+            month = "" + (d.getMonth() + 1),
+            day = "" + d.getDate(),
+            year = d.getFullYear();
+
+          if (month.length < 2) month = "0" + month;
+          if (day.length < 2) day = "0" + day;
+          return [year, month, day].join("-");
+        }
+
+        startday = getMonday(new Date());
+        endday = currentday();
+        //console.log(startday);
+        //console.log(endday);
+        //set the values from the fields into variables
+        // var owner_name = document.getElementById('owner_name').value;
+        // var owner_surname = document.getElementById("owner_surname").value;
+        // var afm = document.getElementById("afm").value;
+        //ajax GET request to DB with hash A
+        $.ajax({
+          url: "/routesreport",
+          type: "POST",
+          dataType: "json",
+          headers: { startday: startday, endday: endday },
+          success: function (result) {
+            //ajax GET request to DB with hash DATA
+            if (Object.keys(result.data_report).length !== 0) {
+              //Set the result data from DB to a global variable
+              dataprint = result;
+
+              $("#table tr").not(":first").remove();
+              $("#table ul").empty();
+
+              document.getElementById("show_table").style.display = "block";
+              document.getElementById("print").style.display = "block";
+              document.getElementById("csv").style.display = "block";
+
+              if (Object.keys(result.errors).length !== 0) {
+                var locations
+                var locations1 = [];
+
+                for (var i = 1; i < (result.data_report).length + 1; i++) {
+                  console.log("first for", i)
+                  var row = table.insertRow(i);
+                  var date = row.insertCell(0);
+                  date.innerHTML = result.data_report[i - 1].date;
+                  var time = row.insertCell(1);
+                  time.innerHTML = result.data_report[i - 1].time;
+                  var vehicle = row.insertCell(2);
+                  vehicle.innerHTML = result.data_report[i - 1].vehicle;
+                  var driver = row.insertCell(3);
+                  driver.innerHTML = result.data_report[i - 1].driver;
+                  var location = row.insertCell(4);
+                  location.innerHTML = result.data_report[i - 1].location;
+                  var kg = row.insertCell(5);
+                  kg.innerHTML = result.data_report[i - 1].kg;
+                  var routebinid = row.insertCell(6);
+                  routebinid.innerHTML = result.data_report[i - 1].routebinid;
+
+                  var coords = row.insertCell(7);
+                  coords.innerHTML = result.data_report[i - 1].coords;
+                  
+                  var test =result.data_report[i - 1].coords;
+                  console.log(`this is the test: `+test)
+                  var tested = test.split(',')[0]
+                  console.log(`this is tested:`+tested)
+                  var test1 = test.split(',')[0]
+                  console.log(test1)
+                  var test2 = test.split(',')[1]
+                  console.log(test2)
+                  test1 = parseFloat(test1)
+                  test2 = parseFloat(test2)
+                  
+                  locations1[i-1] = ['marker',test1,test2];
+                  console.log(locations1[i-1])
+
+                  locations =  locations1;
+               
+
+                 
+                  if (
+                    result.errors.indexOf(
+                      JSON.stringify(result.data_report[i - 1].id)
+                    ) !== -1
+                  ) {
+                    table.rows[i].style.backgroundColor = "white";
+                    //table.rows[i].style.color = "white";
+                    // console.log(locations1)
+                  }
+                }
+
+                $("#table")
+                  .unbind()
+                  .on("click", "tr", function (e) {
+                    e.preventDefault();
+                    var id = $(this).index();
+                    var userid = result.data_report[id - 1].id;
+                    printEntry(userid);
+                  });             
+              }
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 10,
+                  center: new google.maps.LatLng(37.983810, 23.727539),
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+                  })
+                  console.log(locations)
+                  console.log(locations.length)
+                for (i=0; i<locations.length; i++){
+
+                console.log("333",locations[i][i])
+                var infowindow = new google.maps.InfoWindow();
+                var marker;
+                  marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                  })
+                  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                      infowindow.setContent(locations[i][0]);
+                      infowindow.open(map, marker)
+                    }
+                  })(marker, i))
+                
+                }
+
+
+                   
+                 
+            } else {
+              window.alert("Δεν υπάρχει αντίστοιχη καταχώριση");
+            }
+          },
+        });
+
+        return false;
+      });
+
+
+
+
+
+
+
+
+
+      function print() {
+        const token = window.localStorage.getItem('token')
+        console.log(`this is the window.localStorage.getItem`+token)
+        const token2 = JSON.parse(token)
+        console.log(token2)
+        var xhr = new XMLHttpRequest();
+        // table=document.getElementById("table");
+        // var length = table.rows.length;
+        // startday=table.rows[1].cells[1].innerHTML;
+        // endday=table.rows[length-1].cells[1].innerHTML;
+        console.log(startday);
+        console.log(endday);
+        var pdfsrc = "/printroutes";
+        //sent a htmlrequest to server
+        xhr.open("POST", pdfsrc, true);
+        //server response with a arraybuffer
+        xhr.responseType = "arraybuffer";
+        xhr.setRequestHeader("startday", startday);
+        xhr.setRequestHeader("endday", endday);
+        xhr.setRequestHeader("authorization",token2.token)
+        xhr.addEventListener(
+          "load",
+          function (evt) {
+            var data = evt.target.response;
+            // convert arraybuffer into pdf
+            if (this.status === 200) {
+              const blob = new Blob([data], { type: "application/pdf" });
+              const blobURL = URL.createObjectURL(blob);
+              console.log(data);
+              window.open(blobURL, "_blank");
+            }
+          },
+          false
+        );
+
+        xhr.send();
+      }
+      $("#print").click(function () {
+        console.log("print");
+        print();
+      });
+      function printEntry(id) {
+        //console.log(id);
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        // table=document.getElementById("table");
+        // var length = table.rows.length;
+        // startday=table.rows[1].cells[1].innerHTML;
+        // endday=table.rows[length-1].cells[1].innerHTML;
+        //console.log(startday);
+        //console.log(endday);
+        var pdfsrc = "/printsingleroutes";
+        //sent a htmlrequest to server
+        xhr.open("POST", pdfsrc, true);
+        //server response with a arraybuffer
+        xhr.responseType = "arraybuffer";
+        xhr.setRequestHeader("id", id);
+        //xhr.setRequestHeader("endday",endday);
+
+        xhr.addEventListener(
+          "load",
+          function (evt) {
+            var data = evt.target.response;
+            // convert arraybuffer into pdf
+            if (this.status === 200) {
+              const blob = new Blob([data], { type: "application/pdf" });
+              const blobURL = URL.createObjectURL(blob);
+              console.log(data);
+              window.open(blobURL, "_blank");
+            }
+          },
+          false
+        );
+        //return false;
+        xhr.send();
+      }
+      
+      /////<<<----------------------///////////////////ends//////////////------------------>///
+    </script>
+     </section>
+    </div>
+  </div>
+  </body>
+</html>

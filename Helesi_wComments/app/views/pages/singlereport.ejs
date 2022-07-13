@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<%- include ("../partials/print") %>
+
+
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<head >
+  <a >
+    <img src="/images/icons/helesi.png" width="140" height="60" >
+  </a>
+
+    <div style="position: absolute;margin-top: 70px;margin-left: 70px; font-size: 14px;">Report_Code: waste_<span id="date"></span> </div>
+    <table style="position: absolute;margin-top: 120px;margin-left: 70px; font-size: 20px; line-height: 150%;width:80%" >
+      <tr>
+        <td>Date: </td>
+        <td><%= date %></td>
+      </tr>
+      <tr>
+        <td>Hour: </td>
+        <td><%= time %></td>
+      </tr>
+      <tr>
+        <td>Vehicle:</td>
+        <td><%= vehicle %></td>
+      </tr>
+      <tr>
+        <td>Driver: </td>
+        <td><%= driver %></td>
+      </tr>
+      <tr>
+        <td>Location:</td>
+        <td><%= location %></td>
+      </tr>
+      <tr>
+        <td>Coordinates:</td>
+        <td><%= coords %></td>
+      </tr>
+      <tr>
+        <td>Weight (KG):</td>
+        <td><%= kg %></td>
+      </tr>
+      <tr>
+        <td>Route:</td>
+        <td><%= route %></td>
+      </tr>
+      <tr>
+        <td>Passage:</td>
+        <td> <%= pass %></td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td><%= type %></td>
+      </tr>
+      <tr>
+        <td>Material:</td>
+        <td><%= material %></td>
+      </tr>
+      <tr>
+        <td>Quality Degree:</td>
+        <td><%= quality %></td>
+      </tr>
+     
+     </table>
+
+  
+  <div id="test" ></div>
+</head>
+<body onload="makeCode()">
+  <div id="qrcode" style="position: absolute;margin-top: 800px;margin-left: 650px;"></div>
+    <script type='text/javascript'>
+            var qrcode = new QRCode(("qrcode"), {
+              width:  80,
+              height: 80,
+              
+        })
+       
+        function makeCode () {		
+          var address = "https://95.216.162.109/checkqr";
+        	var hashno = "<%= hash %>";
+          var elText = address+ '?'+hashno;
+        	if (!elText) {
+        		alert("Input a text");
+        		elText.focus();
+        		return;
+        	}
+        	qrcode.makeCode(elText);
+        }
+        Object.defineProperty(Date.prototype, 'YYYYMMDDHHMMSS', {
+       value: function() {
+        function pad2(n) {  // always returns a string
+            return (n < 10 ? '0' : '') + n;
+        }
+
+        return this.getFullYear() +
+               pad2(this.getMonth() + 1) + 
+               pad2(this.getDate()) +
+               pad2(this.getHours()) +
+               pad2(this.getMinutes()) +
+               pad2(this.getSeconds());
+       }
+
+        });
+        document.getElementById("date").innerHTML=new Date().YYYYMMDDHHMMSS();
+        
+    </script>
+    </body>
+</body>
+  <footer>
+      
+    <div style="font-size: smaller; position: absolute; top:950px; margin-left: 70px;">
+        <p> Document Certification Blockchain Number: <span  name= "hash" id = "hash" style="font-size: 12px;"><%= hash %></span> </p>
+     <hr>
+     <h5 align="center">Βιομηχανικό Πάρκο Μαρκόπουλου,Μεσογαία Αττικής,θέση Ντοροβατέζα,Τ.Κ. 19003</h5>
+     <h6 align="center" >T: +30-2290 82801  F: +30-22990 40977  E: central@helesi.com</h6>
+      </div>
+    
+
+  </footer>
+  
+  
+</html>
